@@ -1,0 +1,39 @@
+.shelf {
+  width: 100%;
+  margin-bottom: 4vw;
+}
+.shelf h2 {
+  font-size: 2.5vw;
+  margin-left: 5vw;
+}
+.shelf ul {
+  width: 100%;
+  height: auto;
+  margin-top: 0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 5vw;
+}
+.shelf li {
+  height: 20vw;
+  width: 15vw;
+  margin-right: 2.5vw;
+  overflow: hidden;
+  /* transition: width 100ms ease, height 100ms ease; */
+  transition: transform 100ms ease;
+  cursor: pointer;
+}
+.shelf img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.shelf li:hover {
+  /* height: 24vw;
+  width: 18vw; */
+  transform: scale(1.2);
+}
+.shelf.focused li {
+  height: 30vw;
+  width: 22.5vw;
+}

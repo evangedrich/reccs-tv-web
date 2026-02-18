@@ -1,0 +1,51 @@
+.nav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.navButtons {
+  margin: 1vw;
+  border-radius: 3vw;
+  background-color: var(--color-mid-half);
+}
+.navLink, .navLink button {
+  display: inline-block;
+  max-height: 3vw;
+  cursor: pointer;
+}
+.navButtons button {
+  width: auto;
+  min-width: 3vw;
+  height: 3vw;
+  padding: 0 1vw 0 1vw;
+  border-radius: 3vw;
+  font-size: 1.15vw;
+}
+.navButtons button:hover {
+  color: var(--color-back);
+  background-color: var(--color-front);
+}
+.navButtons .active {
+  background-color: var(--color-mid-3);
+}
+
+.title {
+  width: fit-content;
+}
+.title span {
+  display: inline-block;
+  transition: transform 100ms linear;
+}
+.title span:nth-child(odd) {
+  transform: translateY(-0.08em);
+}
+.title span:nth-child(even) {
+  transform: translateY(0.08em);
+}
+.title:hover span:nth-child(odd) {
+  transform: translateY(0.08em);
+}
+.title:hover span:nth-child(even) {
+  transform: translateY(-0.08em);
+}

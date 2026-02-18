@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+:root {
+  --color-back: #181818;
+  --color-front: white;
+  --color-mid-half: rgba(255,255,255,0.03);
+  --color-mid: rgba(255,255,255,0.1);
+  --color-mid-2: rgba(255,255,255,0.15);
+  --color-mid-3: rgba(255,255,255,0.2);
+  --color-mid-4: rgba(255,255,255,0.5);
+  --color-highlight: #ff6040;
+}
+
+body {
+  background-color: #181818;
+  color: var(--color-front);
+}
