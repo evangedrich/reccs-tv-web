@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 95vw;
   height: fit-content;
   margin: auto;
@@ -102,7 +103,7 @@
   cursor: pointer;
   transform-origin: 50% 95%;
   transition: transform 50ms linear;
-  filter: drop-shadow(0 0 0.1vw rgba(0,0,0,0.25));
+  filter: drop-shadow(0 -0.1vw 0.2vw rgba(0,0,0,0.2));
 }
 .pin:hover, .pin.active {
   transform: scale(1.2);

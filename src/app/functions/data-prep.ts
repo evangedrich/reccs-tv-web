@@ -17,11 +17,11 @@ export const searchData = (query: string[]) => {
   const results: flatMovieType[] = [];
   query.forEach(str => {
     let findings = movies;
-    if (str.length===2) {
+    /*if (str.length===2) {
       findings = movies.filter(movie => movie.id.startsWith(str));
     } else if (str.length>=4) {
       findings = [movies.find(movie => movie.id.startsWith(str))];
-    }
+    }*/findings = movies.filter(movie => movie.id.startsWith(str));
     findings.forEach(found => {
       if (!found) return;
       found.entries.forEach((entry,i) => {

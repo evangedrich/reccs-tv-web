@@ -132,6 +132,13 @@ export default function GeoschemePage() {
           <button className={styles.fullView} style={{display:zoom===1?'none':'block',}} onClick={closeZoom}>&larr;</button>
         </div>
 
+        <div
+          className={`absolute w-[13vw] h-[auto] top-0 right-0 bg-[var(--color-back)] m-[2vw] p-[2vw] pr-0 pt-[1.5vw] border-[var(--color-mid-2)] border-[0.1vw] ${zoom!==1&&currSubrId==='OCPL'?'block':'hidden'}`}
+          style={{opacity:ready&&currSubrId==='OCPL'?1:0,transition:'opacity 500ms linear',}}
+        >
+          <object key={`map${val}2`} data="/other/nz.svg" type="image/svg+xml"></object>
+        </div>
+
       </div>
 
     </div>
