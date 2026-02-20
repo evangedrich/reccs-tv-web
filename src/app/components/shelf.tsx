@@ -7,7 +7,7 @@ import styles from '@/app/ui/media.module.css';
 import Image from 'next/image';
 import { getMainTitle, shuffle } from '@/app/functions/data-prep';
 
-function Poster({ movie, top }) {
+function Poster({ movie, top, setWindow, setID }) {
   const [bgColor, setBgColor] = useState('blue');
   useEffect(() => {
     const fac = new FastAverageColor();
@@ -21,7 +21,7 @@ function Poster({ movie, top }) {
   const giveColor = () => { console.log(bgColor); };
   const twColor = 'from-['+movie.color+']';
   return (
-    <li onClick={giveColor} className={notoSans.className}>
+    <li onClick={() => { giveColor(); setWindow(true); setID(movie.id); }} className={notoSans.className}>
       <div className={`relative w-full h-full`} style={{backgroundColor:movie.color??'gray',}}>
         <Image
           src={`/posters/${movie.id}.jpg`}
@@ -40,7 +40,7 @@ function Poster({ movie, top }) {
   )
 }
 
-export default function Shelf({ data, top, title, shuffled, }) {
+export default function Shelf({ data, top, title, shuffled, setWindow, setID, }) {
   const [hasMounted, setHasMounted] = useState(false);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
@@ -83,7 +83,7 @@ export default function Shelf({ data, top, title, shuffled, }) {
       <h2>{title}</h2>
       <ul onScroll={(e) => handleScroll(e)} ref={shelfRef}>
         {displayData.map(movie => (
-          <Poster movie={movie} top={top} key={`card${movie.id}`} />
+          <Poster movie={movie} top={top} setWindow={setWindow} setID={setID} key={`card${movie.id}`} />
         ))}
       </ul>
       <div style={{display:isShort?'none':'block'}}>

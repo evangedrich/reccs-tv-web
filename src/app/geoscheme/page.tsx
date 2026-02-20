@@ -5,6 +5,7 @@ import { fahkwang, inter, openSans } from '@/app/ui/fonts';
 import styles from '@/app/ui/geoscheme.module.css';
 import Link from 'next/link';
 import Stack from '@/app/components/stack';
+import Window from '@/app/components/window';
 import { subregions } from '@/app/lib/subregions';
 import { searchData } from '@/app/functions/data-prep';
 
@@ -25,6 +26,8 @@ export default function GeoschemePage() {
   const [origin, setOrigin] = useState('0 0');
   const [ready, setReady] = useState(false);
   const [currLoc, setCurrLoc] = useState('');
+  const [showWindow, setShowWindow] = useState(false);
+  const [clickedKey, setClickedKey] = useState('');
   function rgbToHex(rgb) {
     const match = rgb.match(/\d+/g);
     if (!match) return null;
@@ -88,7 +91,7 @@ export default function GeoschemePage() {
           <div className={`${styles.text} ${inter.className}`}>
             <h2>{currSubr}</h2>
             <p>This is a description about this subregion.</p>
-            <Stack data={searchData([currSubrId])} matchLocation={currLoc} locSetter={setCurrLoc} />
+            <Stack data={searchData([currSubrId])} matchLocation={currLoc} locSetter={setCurrLoc} showWindow={setShowWindow} setID={setClickedKey} />
           </div>
         </div>
 
@@ -111,6 +114,7 @@ export default function GeoschemePage() {
                 key={`pin${loc.x}${loc.y}`}
                 onMouseOver={() => pinOver(loc.id)}
                 onMouseLeave={pinLeave}
+                onClick={() => { setShowWindow(true); setClickedKey(loc.id); }}
               ><PinSVG isActive={loc.id===currLoc} />
                 {/* <p className={`absolute text-[0.37vw] top-[0] left-[1.05vw] tracking-tighter whitespace-nowrap ${currLoc===loc.id?'':'hidden'} cursor-default`}>{loc.name}</p> */}
               </div>
@@ -141,6 +145,7 @@ export default function GeoschemePage() {
 
       </div>
 
+      <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} />
     </div>
   );
 }

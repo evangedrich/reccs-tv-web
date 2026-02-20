@@ -2,14 +2,14 @@ import { movies } from '@/app/lib/movies';
 
 interface flatMovieType {
   id: string,
-  title: string,
+  title: { original: string, transliteration?: string, translation?: string, } | string,
   year: string,
-  group: { people?: string, language?: string, country?: string, },
+  group: { people?: string, language?: string, country?: string, location?: string, },
   info: string,
   watch: string,
   trailer: string,
-  color: string,
-  location: string,
+  color?: string,
+  location?: { x: number, y: number, name?: string, },
 }
 
 // returns a flat array of all relevant movie entries

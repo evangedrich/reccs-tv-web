@@ -6,6 +6,7 @@
 .shelf h2 {
   font-size: 2.5vw;
   margin-left: 7.5vw;
+  margin-top: 1vw;
   line-height: 1em;
 }
 .shelf ul {
@@ -98,6 +99,9 @@
   transform: scale(1.1);
   filter: drop-shadow(0 0 0.1vw rgba(0,0,0,0.5));
 }
+.shelf h3, .stack h3 {
+  font-weight: 600;
+}
 
 
 
@@ -138,4 +142,104 @@
 }
 .stack li > div:hover, .stack li > div.active {
   outline: 0.3vw solid var(--color-front);
+}
+
+
+
+.windowBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 50;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms, visibility 300ms;
+}
+.windowBg.active {
+  visibility: visible;
+  opacity: 1;
+}
+.window {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 2.5vw);
+  margin-top: 2.5vw;
+  background-color: var(--color-back);
+  border-radius: 1.5vw 1.5vw 0 0;
+  box-shadow: inset 0 0 0 0.1vw var(--color-mid);
+  transform: translateY(100%);
+  transition: transform 300ms ease-out;
+  overflow-y: auto;
+  padding: 6vw;
+}
+.windowBg.active .window {
+  transform: translateY(0);
+}
+
+.window h1 {
+  font-size: 6vw;
+  line-height: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0.5vw;
+}
+.window h2 {
+  font-size: 1.8vw;
+  font-weight: 300;
+  margin-bottom: 2vw;
+}
+.window h3 {
+  font-weight: 400;
+  font-size: 1.2vw;
+  margin-bottom: 2vw;
+}
+.window h3 > span {
+  display: inline-block;
+  margin-right: 1vw;
+}
+.window p {
+  font-size: 1.2vw;
+}
+.window .wrapper {
+  display: flex;
+}
+.window .wrapper > div:first-of-type {
+  flex-grow: 1;
+}
+.window .wrapper > div:last-of-type {
+  flex-shrink: 0;
+  width: 24vw;
+  height: calc(24vw * 4 / 3);
+  overflow: auto;
+  margin-left: 6vw;
+  background-color: var(--color-mid);
+}
+
+.closeWindow {
+  position: absolute;
+  top: 1.5vw;
+  left: 1.5vw;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 0.75vw;
+  text-align: center;
+  line-height: 3vw;
+  background-color: var(--color-mid-half);
+  box-shadow: inset 0 0 0 0.1vw var(--color-mid);
+  color: var(--color-mid-4);
+  font-weight: light;
+  font-size: 2vw;
+  font-family: system-ui, sans-serif;
+  cursor: pointer;
+  transition: transform 100ms linear;
+}
+.closeWindow:hover {
+  transform: scale(1.05);
+  color: var(--color-front);
+}
+.closeWindow:active {
+  transform: scale(0.95);
+  background-color: var(--color-mid);
 }

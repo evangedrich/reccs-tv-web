@@ -5,9 +5,9 @@ import { notoSans } from '@/app/ui/fonts';
 import Image from 'next/image';
 import { getMainTitle, shuffle } from '@/app/functions/data-prep';
 
-function Poster({ movie, top, loc, locSetter }) {
+function Poster({ movie, top, loc, locSetter, showWindow, setID }) {
   return (
-    <li className={notoSans.className} onMouseOver={() => locSetter(movie.id)} onMouseLeave={() => locSetter('')}>
+    <li className={notoSans.className} onMouseOver={() => locSetter(movie.id)} onMouseLeave={() => locSetter('')} onClick={() => { showWindow(true); setID(movie.id); }}>
       <div className={`relative w-full h-full ${movie.id===loc?styles.active:''}`}>
         <Image
           src={`/posters/${movie.id}.jpg`}
@@ -26,12 +26,12 @@ function Poster({ movie, top, loc, locSetter }) {
   )
 }
 
-export default function Stack({ data, top, shuffled, matchLocation, locSetter }) {
+export default function Stack({ data, top, shuffled, matchLocation, locSetter, showWindow, setID }) {
   return (
     <div className={styles.stack}>
       <ul>
         {data.map(movie => (
-          <Poster movie={movie} top={top} loc={matchLocation} locSetter={locSetter} key={`stack${movie.id}`} />
+          <Poster movie={movie} top={top} loc={matchLocation} locSetter={locSetter} showWindow={showWindow} setID={setID} key={`stack${movie.id}`} />
         ))}
       </ul>
     </div>

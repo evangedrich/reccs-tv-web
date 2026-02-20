@@ -1,9 +1,9 @@
 interface movieType {
   id: string,
   entries: {
-    title: { original: string, transliteration?: string, translation?: string } | string,
+    title: { original: string, transliteration?: string, translation?: string, } | string,
     year: string,
-    group: { people?: string, language?: string, country?: string, },
+    group: { people?: string, language?: string, country?: string, location?: string, },
     info: string,
     watch: string,
     trailer: string,
@@ -478,7 +478,7 @@ const cultFeatFilms: movieType[] = [
         info: `*Ten Canoes* tells an ancient Yolngu Aboriginal story, blending traditional myth with a modern-day narrative. The film follows a group of men on a goose egg hunt, where an elder tells a story from the past about a young man coveting his brother's wife, illustrating the consequences of wrong desires and tribal law. The film uses a unique storytelling structure, switching between black and white for the present-day hunt and color for the ancient story, all while showcasing the beauty of Arnhem Land and the Yolngu culture.\nThe film's dialogue is in the Ganalbingu dialect of the Djinba language, with David Gulplil providing narration in English, though an alternate version of the film exists with narration in his Mandjalpingu dialect.`,
         watch: 'https://youtu.be/2AMmHrFdyBw',
         trailer: 'https://youtu.be/tH_MY8FJuYo',
-        color: '#663c25',
+        color: '#5E4229',
         location: { x: 86.4, y: 64, name: 'Arafura Swamp', }
       },
     ],
