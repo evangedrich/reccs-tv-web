@@ -4,10 +4,11 @@
   margin: auto;
   display: flex;
   overflow: hidden;
+  border-radius: 1.5vw;
 }
 .textContainer {
   position: relative;
-  height: 42vw;
+  height: 41vw;
   flex-shrink: 0;
   transition: width 500ms ease-in-out;
   overflow: hidden;
@@ -16,6 +17,7 @@
   justify-content: center;
   background-color: var(--color-mid-half);
   border-radius: 1.5vw;
+  box-shadow: inset 0 0 0 0.1vw var(--color-mid);
 }
 .text {
   position: absolute;
@@ -38,6 +40,7 @@
   height: fit-content;
   aspect-ratio: 16 / 7.05;
   overflow: hidden;
+  border-radius: 1.5vw;
   flex-shrink: 0;
 }
 .fullView {
@@ -53,7 +56,7 @@
   box-sizing:border-box;
   font-family: system-ui, sans-serif;
   font-size: 1.8rem;
-  font-weight: light;
+  font-weight: 300;
   line-height: calc(2.2rem - 2px);
   text-align: center;
   cursor: pointer;
@@ -93,5 +96,14 @@
 }
 .mapLabels button:hover {
   opacity: 1;
-  color: #fff769;
+  transform: scale(1.15);
+}
+.pin {
+  cursor: pointer;
+  transform-origin: 50% 95%;
+  transition: transform 50ms linear;
+  filter: drop-shadow(0 0 0.1vw rgba(0,0,0,0.25));
+}
+.pin:hover, .pin.active {
+  transform: scale(1.2);
 }

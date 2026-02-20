@@ -119,13 +119,13 @@ export const subregions: subregionType = [
     id: "AMSO",
     color: "#fb9a95",
     text: { x: 32, y: 79, el: <>Southern<br/>S. Am.</>, },
-    zoom: { x: 36, y: 95, amount: 3.7, },
+    zoom: { x: 36, y: 96.5, amount: 3.7, },
   },
   {
     name: "North Asia",
     id: "ASNO",
     color: "#80b1d3",
-    text: { x: 71, y: 11, el: <>North Asia</>, },
+    text: { x: 71, y: 11.2, el: <>North Asia</>, },
     zoom: { x: 110, y: 5, amount: 2.25, },
   },
   {
@@ -140,7 +140,7 @@ export const subregions: subregionType = [
     id: "ASSE",
     color: "#ffeda0",
     text: { x: 78, y: 48, el: <>Southeast<br/>Asia</>, },
-    zoom: { x: 101, y: 51, amount: 3.5, },
+    zoom: { x: 101, y: 51.3, amount: 3.5, },
   },
   {
     name: "Highland Asia",
@@ -211,7 +211,7 @@ export const subregions: subregionType = [
     color: "#fb9a98",
     shape: <path d="M 86,23.5 98,25 99.5,31 94.5,33 92,29 85,28 z" fill="#808080"></path>,
     text: { x: 87, y: 59, el: <>Melanesia</>, },
-    zoom: { x: 112, y: 69, amount: 4, },
+    zoom: { x: 113, y: 69, amount: 3.9, },
   },
   {
     name: "Micronesia",

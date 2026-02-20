@@ -23,6 +23,7 @@ export const searchData = (query: string[]) => {
       findings = [movies.find(movie => movie.id.startsWith(str))];
     }
     findings.forEach(found => {
+      if (!found) return;
       found.entries.forEach((entry,i) => {
         const flatMovie: flatMovieType = {
           id: `${i===0 ? found.id : found.id+i}`,
@@ -39,6 +40,16 @@ export const searchData = (query: string[]) => {
     });
   });
   return results;
+};
+
+// Fisher-Yates shuffles elements in an array (AI prepped this one for me)
+export const shuffle = (arr) => {
+  let currIndex = arr.length, randIndex;
+  for (let i=0; i<currIndex; i++) {
+    randIndex = Math.floor(Math.random() * currIndex);
+    currIndex--;
+    [arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
+  } return arr;
 };
 
 // returns correct primary title

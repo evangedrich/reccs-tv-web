@@ -8,33 +8,33 @@ interface movieType {
     watch: string,
     trailer: string,
     color?: string,
-    location?: { x: number, y: number },
+    location?: { x: number, y: number, name?: string, },
   }[],
 }
 
-export const movies: movieType = [
+const cultFeatFilms: movieType[] = [
   {
     id: 'AFNOCFF',
     entries: [
       {
-        title: {original: "ⵜⵉⴳⵎⵎⵉ ⵏ ⵉⴳⵔⴰⵏ", transliteration: "Tigmi n Igren", translation: "House in the Fields"},
+        title: { original: "ⵜⵉⴳⵎⵎⵉ ⵏ ⵉⴳⵔⴰⵏ", transliteration: "Tigmi n Igren", translation: "House in the Fields", },
         year: `2017`,
         group: { people: "Shilha", language: "Tashelhiyt", country: "Morocco", },
-        info: `In a remote village in the High Atlas Mountains of Morocco, at the crossroad between tradition and change, two sisters experience the last seasons of childhood.\nThe film is a sensitive portrait of a Berber community whose social fabric and centuries-old traditions are gripped by change. With long, portrait-like takes, precise observations of daily life, and strikingly photographed images of the lush green surroundings and the majestic red of the massif, <i>Tigmi n Igren</i> manages to bring a faraway world up astonishingly close.`,
+        info: `In a remote village in the High Atlas Mountains of Morocco, at the crossroad between tradition and change, two sisters experience the last seasons of childhood.\nThe film is a sensitive portrait of a Berber community whose social fabric and centuries-old traditions are gripped by change. With long, portrait-like takes, precise observations of daily life, and strikingly photographed images of the lush green surroundings and the majestic red of the massif, *Tigmi n Igren* manages to bring a faraway world up astonishingly close.`,
         watch: 'https://www.kanopy.com/en/product/house-fields',
         trailer: 'https://youtu.be/dVunYbRl2hA',
         color: '#8d796e',
-        location: { x: 48, y: 32, },
+        location: { x: 48, y: 32, name: 'High Atlas Mountains', },
       },
       {
-        title: { original: "ⴰⴽⵓⵏⴰⴽ ⵜⴷⴰⵍⴰⵜ ⵜⴰⵀⴰ ⵜⴰⵣⵓⴳⵀⴰⵉ", transliteration: "Akounak Tedalat Taha Tazoughai", translation: "Rain the Color of Blue with A Little Red In It" },
+        title: { original: "ⴰⴽⵓⵏⴰⴽ ⵜⴷⴰⵍⴰⵜ ⵜⴰⵀⴰ ⵜⴰⵣⵓⴳⵀⴰⵉ", transliteration: "Akounak Tedalat Taha Tazoughai", translation: "Rain the Color of Blue with A Little Red In It", },
         year: `2015`,
         group: { people: "Tuareg", language: "Tamasheq", country: "Niger/USA", },
         info: `description`,
         watch: '',
         trailer: 'https://youtu.be/QHgEuzv-zNA',
         color: '#4f3457',
-        location: { x: 51.7, y: 43.5, },
+        location: { x: 51.7, y: 43.5, name: 'Agadez, Niger', },
       },
     ],
   },
@@ -44,11 +44,42 @@ export const movies: movieType = [
       {
         title: "Supa Modo",
         year: '2018',
-        group: { language: "Swahili", country: "Kenya" },
+        group: { language: "Swahili", country: "Kenya", },
         info: ``,
         watch: 'https://www.kanopy.com/en/product/15088228',
         trailer: 'https://youtu.be/G7ToKioHCoU',
         color: '#5a949c',
+        location: { x: 59.4, y: 55.5, name: 'Kabuku Village', },
+      },
+    ],
+  },
+  {
+    id: 'AFSOCFF',
+    entries: [
+      {
+        title: { original: "Inxeba", translation: "The Wound", },
+        year: '2017',
+        group: { language: "Xhosa", country: "South Africa", },
+        info: ``,
+        watch: 'https://www.kanopy.com/en/product/wound-0',
+        trailer: 'https://youtu.be/ja1QEpgUszo',
+        color: '#8a3b36',
+        location: { x: 56.8, y: 76.9, name: 'eMpuma-Kapa', },
+      },
+    ],
+  },
+  {
+    id: 'AFCECFF',
+    entries: [
+      {
+        title: { original: "Le silence de la forêt", translation: "The Forest", },
+        year: '2003',
+        group: { people: "BaAka", language: "Aka/Sango/French", country: "CAF", },
+        info: ``,
+        watch: 'https://www.kanopy.com/en/product/silence-forest',
+        trailer: 'https://youtu.be/PVLfEqbquN8',
+        color: '#1f3057',
+        location: { x: 54, y: 51.5, name: 'Lobaye Region', },
       },
     ],
   },
@@ -56,14 +87,482 @@ export const movies: movieType = [
     id: 'AFWECFF',
     entries: [
       {
-        title: { original: "ߦߋ߮ߟߋߣ", transliteration: "Yeelen", translation: "Brightness" },
+        title: { original: "ߦߋ߮ߟߋߣ", transliteration: "Yeelen", translation: "Brightness", },
         year: '1987',
-        group: {people: "Bambara", language: "Bambara/Fula", country: "Mali"},
+        group: { people: "Bambara", language: "Bambara/Fula", country: "Mali", },
         info: ``,
         watch: 'https://www.kanopy.com/en/product/yeelen',
         trailer: 'https://youtu.be/GRlNG9lJ6rs',
         color: '#d4a555',
+        location: { x: 47, y: 44.5, name: 'Dilli, Mali' },
+      },
+    ],
+  },
+  {
+    id: 'AMNOCFF',
+    entries: [
+      {
+        title: { original: "ᐊᑕᓈᕐᔪᐊᑦ", transliteration: "Atanarjuat", translation: "The Fast Runner", },
+        year: '2001',
+        group: { people: "Inuit", language: "Inuktitut", location: "Nunavut, CA", },
+        info: `Igloolik is a community of 1,200 people located on a small island in the north Baffin region of the Canadian Arctic with archeological evidence of 4,000 years of continuous habitation. Throughout these millennia, with no written language, untold numbers of nomadic Inuit renewed their culture and traditional knowledge for every generation entirely through storytelling.\n*Atanarjuat* is part of this continuous stream of oral history carried forward into the new millennium through a marriage of Inuit storytelling skills and new technology.\nDir/Prod **ZACHARIAS KUNUK** is the renowned Inuk filmmaker responsible for an extensive Inuktitut-language media presence, with directing, writing, and producing credits on a great variety of North American indigenous cinema, including over 30 films, funding for the IsumaTV multimedia platform, and much more.`,
+        watch: 'https://tv.apple.com/us/movie/umc.cmc.1co9m5b61l1hkihyksjodghe2',
+        trailer: 'https://youtu.be/O7vbzmLueAY',
+        color: '#a09a96',
+      },
+    ],
+  },
+  {
+    id: 'AMEACFF',
+    entries: [
+      {
+        title: { original: "ᑎᐯᐢᑳᐃ ᓇᑐᐸᓃᒐᑫᐘᐠ", transliteration: "Tipêskâi Natopanîcakêwak", translation: "Night Raiders", },
+        year: '2021',
+        group: { people: "Cree", language: "English/Cree", country: "Canada" },
+        info: `In a dystopian future, a military government separates children from their parents and puts them in schools, where they say the pledge of allegiance and speak one language. Niska, a Cree woman, joins an underground resistance movement to rescue her daughter.\nIn this vivid allegory for the U.S.-Canadian residential school system, life under a relentlessly urbanizing, exploitative, militaristic state in the contemporary Eastern Woodlands is depicted with exceptional clarity.\nDir/Scr **DANIS GOULET** is a Cree-Métis filmmaker and screenwriter from Saskatchewan, whose father grew up in the traditional Cree community of Cumberland House.`,
+        watch: 'https://www.netflix.com/title/81470716',
+        trailer: 'https://youtu.be/dZC_MimYhos',
+        color: '#6b574e',
+      },
+    ],
+  },
+  {
+    id: 'AMSWCFF',
+    entries: [
+      {
+        title: { original: "Béeso Dah Yiníłjaa'", translation: "Fistful of Dollars", },
+        year: '2021',
+        group: { people: "Diné", language: "Navajo", location: "Arizona, US", },
+        info: `*Béeso Dah Yiníłjaa'* is a version of the 1964 Western film *A Fistful of Dollars* that has been dubbed entirely in the Navajo language. The project was spearheaded by the Navajo Nation Museum as an effort to preserve and revitalize the language, particularly among younger generations. The film, originally a "spaghetti Western" starring Clint Eastwood, was chosen partly because it does not feature any Native American characters, thus avoiding the often inaccurate or offensive portrayals found in many other films of the genre.`,
+        watch: '',
+        trailer: 'https://youtu.be/qvK0_Lg95tg',
+        color: '#a87d4f',
+      },
+      {
+        title: "Drunktown's Finest",
+        year: '2014',
+        group: { people: "Diné", language: "Navajo", location: "Arizona, US", },
+        info: `Three young Navajos—an adopted Native girl, a young father-to-be, and a trans woman who dreams of being a model—strive to escape the hardships of life on an Indian reservation. Nizhoni seeks out her past, well after being adopted by a white Christian family; Felixia pursues a spot in the “women of the tribe” calendar; and Sickboy is headed to basic training so he can take care of his soon-to-be-born child.\nDir/Scr **SYDNEY FREELAND** is a Navajo filmmaker born in Gallup, NM, whose work often focuses on portraying authentic and complex stories about the queer and indigenous communities. She named her first feature-length film *Drunktown's Finest* in response to a *20/20* segment on ABC News calling her hometown of Gallup “Drunktown, USA”.`,
+        watch: 'https://vimeo.com/groups/fms620/videos/241461186',
+        trailer: 'https://youtu.be/Kl2Yh6YcMBU',
+        color: '#b68650',
+      },
+    ],
+  },
+  {
+    id: 'AMNWCFF',
+    entries: [
+      {
+        title: { original: "SG̱aawaay Ḵ'uuna", translation: "Edge of the Knife", },
+        year: '2018',
+        group: { people: "Haida", language: "Haida", location: "Haida Gwaii, CA", },
+        info: `Set in 19th-century Haida Gwaii, *SG̱aawaay Ḵ'uuna* tells the classic Haida story of a traumatized and stranded man transformed into Gaagiixiid, the wildman. It is the first feature film spoken only in the Haida language.\nWith input from Haida Gwaii residents, the screenplay was written in 2015 with an aim to preserve and teach the endangered Haida language.`,
+        watch: 'https://tv.apple.com/us/movie/edge-of-the-knife/umc.cmc.8rv2wrgfsz7pvph6aojlsat4',
+        trailer: 'https://youtu.be/DnbOw5Nuq2U',
+        color: '#2d3940',
+      },
+    ],
+  },
+  {
+    id: 'AMINCFF',
+    entries: [
+      {
+        title: 'The Unknown Country',
+        year: '2022',
+        group: { people: "Oglala", language: "English", location: "South Dakota, US", },
+        info: `A grieving woman embarks on a road trip through the American Midwest after receiving an unexpected invitation to reunite with her estranged Oglala Lakota family. Along the way, she uncovers her family history and a path to closure.\nIn this poetic romance-for-life, a path is forged not only for the construction of contemporary cinema but also the experience of life's journey on the whole.\nDir/Scr **MORISSA MALTZ** assembled a council of women Lily Gladstone, Lainey Bearkiller Shangreaux, and Vanara Taing to devise and perform the story of *The Unknown Country*.`,
+        watch: 'https://www.amazon.com/gp/video/detail/B0B8PXWGSM/ref=atv_dp_share_cu_r',
+        trailer: 'https://youtu.be/enT3zQzvhGw',
+        color: '#3a3b5c',
+      },
+    ],
+  },
+  {
+    id: 'AMCRCFF',
+    entries: [
+      {
+        title: 'Garifuna in Peril',
+        year: '2012',
+        group: { people: "Garínagu", language: "Garifuna/English", country: "Honduras", },
+        info: `A Garifuna-language teacher, Ricardo, struggles to preserve his endangered Afro-Amerindian culture by building a language school in his home village in Honduras. A business venture with his brother designed to raise money for the school’s construction becomes complicated by the expansion plans of a nearby tourist resort into indigenous territory. Historical parallels are invoked as Ricardo’s son rehearses a stage play about the Garifuna people’s last stand against British colonialism over 200 years ago in their motherland, the island of St. Vincent in the Caribbean.\nNaturalistically shot, with debut performances by nearly the entire cast, *Garifuna in Peril* is the first major feature film with the majority of dialogue in Garifuna, an Arawakan language (with a high number of loanwords from Carib and European languages) indigenous to the Caribbean islands of St. Vincent before its speakers (of mixed West/Central African, Arawakan, and Kalinago ancestry) were deported by the British to Honduras in 1797.`,
+        watch: 'https://tubitv.com/movies/341514/garifuna-in-peril',
+        trailer: 'https://youtu.be/NQs5m9haasM',
+        color: '#6e8079',
+      },
+    ],
+  },
+  {
+    id: 'AMCECFF',
+    entries: [
+      {
+        title: { original: "Ixcanul", translation: "Volcano", },
+        year: '2015',
+        group: { people: "Kaqchikel Maya", language: "Kaqchikel", country: "Guatemala", },
+        info: `In a village at the foot of an active volcano, seventeen-year-old María and her parents cultivate coffee. They practice a mixture of Catholicism and the traditional Maya religion, praying to the Christian God and making offerings to the deity of the volcano. She is arranged to be married to the coffee plantation foreman in a traditional ceremony, but problems arise when her desire to know more of the world beyond the volcano causes unforeseen consequences.\nThe film stars Guatemalan actress María Mercedes Coroy in her first onscreen role, alognside veteran street theater actors María Telón and Manuel Antún.\nDir/Scr **JAYRO BUSTAMENTE** is a mestizo filmmaker and screenwriter born and raised in the highlands of Guatemala. *Ixcanul* is his first feature film, followed by historical horror films *La Llorona* and *Rita*.`,
+        watch: 'https://www.kanopy.com/en/product/ixcanul',
+        trailer: 'https://youtu.be/EJfvKnLPqFM',
+        color: '#6d6d8d',
+      },
+    ],
+  },
+  {
+    id: 'AMHICFF',
+    entries: [
+      {
+        title: { original: "Wiñaypacha", translation: "Eternity", },
+        year: '2018',
+        group: { people: "Aymara", language: "Aymara", country: "Peru", },
+        info: `An elderly couple named Willka and Phaxsi (Sun and Moon) live in a remote part of the Peruvian Andes. They await the return of their son who has left for the city.\nDir/Scr **ÓSCAR CATACORA** was an Aymara filmmaker, screenwriter, producer, and cinematographer best known for the drama films *Wiñaypacha* and *Yana-Wara*. During the production of the latter, he tragically died of appendicitis at the age of 34. His uncle Tito Catacora, who had encouraged his nephew's interests by accompanying him to filmmaking classes, completed work on Óscar's two in-progress films posthumously.`,
+        watch: 'https://www.amazon.com/Eternity-Vicente-Catacora/dp/B07HR55PK5',
+        trailer: 'https://youtu.be/AA3Yo7kcPQ4',
+        color: '#593f33',
+      },
+    ],
+  },
+  {
+    id: 'AMLOCFF',
+    entries: [
+      {
+        title: { original: "A Última Floresta", translation: "The Last Forest", },
+        year: '2021',
+        group: { people: "Yanomami", language: "Yanomamö", location: "Amazonas, BR", },
+        info: `In dense soundscapes and powerful images, alternating between documentary observation and staged sequences, Yanomami spokesperson Davi Kopenawa translates the ideas from his published literary works—especially the landmark *A Queda do Céu: Palavra de um Xamã Yanomami*—into cinematic form, attempting to combat the growing threats to his community and natural environment through the accessible depiction of traditional narratives and lifestyle.`,
+        watch: 'https://youtu.be/MsUAluISvgE',
+        trailer: 'https://youtu.be/2tK-5dydqp8',
+        color: '#5c693a',
+      },
+    ],
+  },
+  {
+    id: 'AMSOCFF',
+    entries: [
+      {
+        title: 'Eami',
+        year: '2022',
+        group: { people: "Ayoreo", language: "Ayoreo", country: "Paraguay", },
+        info: `Eami's homeland is invaded by settlers. She embodies Asojá, the bird-god-woman, falling into a trance. She walks slowly and stunned through her beloved forest, preparing to leave it forever.\nDir/Scr/Prod **PAZ ENCINA** continues her work of remembrance with an intimate and sensorial approach to the recent history of Paraguay. Eami is a fragmented work, an immersive and hypnotic experience in which the mysticism of nature and its soundscape is interwoven with the perspective of a child.`,
+        watch: '',
+        trailer: 'https://youtu.be/j_WZGMo9BXo',
+        color: '#636341',
+      },
+    ],
+  },
+  {
+    id: 'ASNOCFF',
+    entries: [
+      {
+        title: { original: "Тойон Кыыл", transliteration: "Toyon kyyl", translation: "The Lord Eagle", },
+        year: '2018',
+        group: { people: "Sakha", language: "Sakha", location: "Sakha, RU", },
+        info: `Yakutia, 1930. Old Mikipper and his wife Oppuos live their days in the thick taiga. Cows, hunting, and fishing make up the simple everyday lives of the old people. Once, early in the winter, an eagle flies into their garden. The old people dare not drive it away because eagles are sacred.\nDir. **EDUARD NOVIKOV** has made a name for himself as one of the Sakha Republic's most impressive directors. He is a stalwart figure in the Sakhawood film industry, which outputs around 7-10 feature films per year and features local stories, actors, and culture.`,
+        watch: 'https://films.klassiki.online/the-lord-eagle',
+        trailer: 'https://youtu.be/5JVlgU_vV1E',
+        color: '#563229',
+        location: { x: 78, y: 12, name: 'Yakutia', }
+      },
+      {
+        title: { original: "Сэр' няда", transliteration: "Ser' nyada", translation: "White Moss", },
+        year: '2014',
+        group: { people: "Nenets", language: "Nenets", location: "Yamalia, RU", },
+        info: `*White Moss*, also known by its Russian title *Belyy yagel*, takes place in the Yamalo-Nenets Autonomous Okrug of Russia in Western Siberia, where the Nenets people lead a traditional way of life. A young Nenets man, waiting for his beloved from the mainland, is forced into marriage by his mother. It is a story about loyalty, tradition, and the difficulty of choice.\nThe film is based on the novel of the same name by Nenets author Anna Nerkagi, and features primarily Kalmyk, Buryat, and Yakut lead actors, alongside supporting roles played by Nenets from Yamal, all speaking the Tundra Nenets langauge.`,
+        watch: 'https://tubitv.com/movies/505928/the-white-moss-belyy-yagel',
+        trailer: 'https://youtu.be/KVKnN-9czbk',
+        color: '#81777b',
+        location: { x: 63.5, y: 8, name: 'Yamalia', }
+      },
+    ],
+  },
+  {
+    id: 'ASEACFF',
+    entries: [
+      {
+        title: { original: "霸王別姬", transliteration: "Bà Wáng Bié Jī", translation: "Farewell, My Concubine", },
+        year: '1992',
+        group: { people: "Han Chinese", language: "Mandarin", country: "China", },
+        info: `In 1924, young Cheng Dieyi begins training at the Beijing Opera House at the same time as Duan Xiaolou. Cheng specializes in playing female parts, often against Duan's commanding male leads. Over the next 50 years, the two men maintain a complicated relationship as China undergoes turbulent changes.\nDir. **CHÉN KĂIGĒ** is a Chinese filmmaker and leading figure in the fifth generation of Chinese directors, known for his visual flair and epic storytelling.`,
+        watch: 'https://www.kanopy.com/en/product/farewell-my-concubine',
+        trailer: 'https://youtu.be/FFiHfDBt9lE',
+        color: '#387DB5',
+        location: { x: 79.3, y: 26.9, name: 'Beijing', }
+      },
+    ],
+  },
+  {
+    id: 'ASSECFF',
+    entries: [
+      {
+        title: { original: "Mùi đu đủ xanh", translation: "The Scent of Green Papaya", },
+        year: '1993',
+        group: { people: "Vietnamese", language: "Vietnamese", country: "France", },
+        info: `1950s Saigon through the eyes of Mui, a Vietnamese servant girl. At 10 years-old, Mui leaves her village to work for an affluent, troubled family. As she comes of age, Mui finds work in the household of a pianist she has admired since childhood, and finds their relationship growing in complexity.\nDir/Scr **TRẦN ANH HÙNG** left Vietnam at age 12, but returned 16 years later to Hồ Chí Minh City with plans to shoot *Mùi đu đủ xanh* on location in Vietnam. When accomplishing this proved too cumbersome, the film was instead shot entirely on a soundstage reconstruction of downtown Saigon in Bry-sur-Marne, France.`,
+        watch: ['https://www.kanopy.com/en/product/scent-green-papaya','https://archive.org/details/the.-scent.-of.-green.-papaya.-1993.1080p.-blu-ray.x-264.-aac-yts.-mx'],
+        trailer: 'https://youtu.be/q2OfJYvjgQ8',
+        color: '#504134',
+        location: { x: 78.6, y: 47.3, name: 'Ho Chi Minh City', }
+      },
+      {
+        title: { original: "โหมโรง", transliteration: "Hom rong", translation: "The Overture", },
+        year: '2004',
+        group: { people: "Thai", language: "Thai", country: "Thailand", },
+        info: `*Hom rong* is a fictionalized account of the life of Luang Pradit Pairoh, a Thai classical music master who lived from the late 19th to mid-20th century. The story follows his journey from childhood to becoming a master of the *ranat-ek* (Thai xylophone), highlighting the challenges he faces as traditional Thai music struggles against modernization and government bans.\nDir/Scr/Prod **ITTHISOONTORN VICHAILAK** is a Thai filmmaker known for *Hom rong* (2004), *Look Ba Teaw La Sud* (1993) and *Khon liang chang* (1987).`,
+        watch: 'https://www.kanopy.com/en/product/overture',
+        trailer: 'https://youtu.be/xW3yryL6vCw',
+        color: '#deae73',
+        location: { x: 76.89, y: 45.2, name: 'Bangkok', }
+      },
+      {
+        title: { original: "ប៊ូឌីញ ស", transliteration: "White Building", },
+        year: '2021',
+        group: { people: "Khmer", language: "Khmer", country: "Cambodia", },
+        info: `A 20-year-old faces the demolition of his lifelong home, the White Building in Phnom Penh, Cambodia, and the pressures from family, friends, and neighbors that arise and intersect in this moment of sudden change.\nDir/Scr **KAVICH NEANG** is a Cambodian filmmaker known for *Last Night I Saw You Smiling* (2019), *White Building* (2021) and *Three Wheels* (2015).`,
+        watch: 'https://www.amazon.com/gp/video/detail/amzn1.dv.gti.74051ffb-99bd-44e9-9ea9-6dcbdc1dd3de',
+        trailer: 'https://youtu.be/Q5nR18GjjuA',
+        color: '#4a3231',
+        location: { x: 78, y: 46.6, name: 'Phnom Penh', }
+      },
+    ],
+  },
+  {
+    id: 'ASHICFF',
+    entries: [
+      {
+        title: { original: "ཤམ་བྷ་ལ།", transliteration: "Shambhala", },
+        year: '2024',
+        group: { people: "Nepali", language: "Nepali/Tibetan", country: "Nepal", },
+        info: `In the heart of the Nepalese Himalayas, the spirited Pema embraces a polyandrous marriage with Tashi and his two younger brothers. They initially lead a harmonious life, but when Tashi fails to return from a trading trip to Lhasa, the legitimacy of Pema’s unborn child is questioned by her community. Determined to prove her love and purity, she embarks on a quest to find Tashi.\nDir/Scr **MIN BAHADUR BHAM** sought with *Shambhala*, originally titled *Chiso Barsha (A Year of Cold)*, to make a female-driven travelogue for his second feature film.`,
+        watch: '',
+        trailer: 'https://youtu.be/IbT7lt8NZ6k',
+        color: '#a09ca1',
+        location: { x: 71.7, y: 34.6, name: 'Dolpo Region', }
+      },
+      {
+        title: { original: "ལུང་ནག་ན", transliteration: "Lung nag na", translation: "Lunana: A Yak in the Classroom", },
+        year: '2019',
+        group: { people: "Ngalop", language: "Dzongkha", country: "Bhutan", },
+        info: ``,
+        watch: ['https://tubitv.com/movies/100018429/lunana-a-yak-in-the-classroom','https://www.amazon.com/gp/video/detail/amzn1.dv.gti.2617c909-646d-4c96-aa0d-ca44f34ed961'],
+        trailer: '',
+        color: '#9e603a',
+        location: { x: 73.8, y: 35.45, name: 'Gasa District', }
+      },
+    ],
+  },
+  {
+    id: 'ASSOCFF',
+    entries: [
+      {
+        title: { original: "ఆర్‌ఆర్‌ఆర్‌ లేదా రౌద్రం రణం రుధిరంం", transliteration: "RRR: Roudram Ranam Rudhiram", translation: "RRR: Rise Roar Revolt", },
+        year: '2022',
+        group: { people: "Telugu", language: "Telugu", location: "Telangana, IN", },
+        info: `An epic tale of a fearless Gōṇḍī revolutionary leader on a dangerous mission, who confronts a steely Indian Imperial Police officer serving the British Raj. *RRR* is a historical fiction film featuring characters inspired by two real-life Indian freedom fighters.\nDir/Scr **S. S. RAJAMOULI**, whose Telugu-language films rank among the most expensive and the highest grossing in India, delivers just about every possible mode of cinematic entertainment in this expansive period action drama.`,
+        watch: 'https://www.netflix.com/title/81476453',
+        trailer: 'https://youtu.be/NgBoMJy386M',
+        color: '#627147',
+      },
+    ],
+  },
+  {
+    id: 'ASWECFF',
+    entries: [
+      {
+        title: { original: "أنَاشِيْدُ آدَمَ", transliteration: "Anāshīdu Ādama", translation: "Songs of Adam", },
+        year: '2024',
+        group: { people: "Arab", language: "Arabic", country: "Iraq", },
+        info: `Mesopotamia, 1946. Adam and Ali are forced to watch the washing of their grandfather's body. The experience affects Adam so deeply that he decides never to grow up—and stops aging.\nThe years go by, and the villagers believe Adam is cursed, while his brother—who ages year by year—grows bitter and insists that Adam should be institutionalized. Over several decades, the family, friends, and Iraq undergo enormous changes, while Adam remains the same. Only Iman and Anki, a shepherd and Adam's best friend, see his condition as a blessing.\nThis is a beautiful, magical-realist, and allegorical story set among the sand dunes and oases of Mesopotamia, a region in Iraq often referred to as a cradle of civilization.\nDir/Scr **ODAY RASHEED**, born 1973, is an Iraqi-American filmmaker, screenwriter, and producer. He made his directorial debut with *Underexposure* in 2005, which is regarded as the first film filmed in Baghdad during the American occupation. *Songs of Adam* is his fourth feature film as a director.`,
+        watch: '',
+        trailer: 'https://youtu.be/PgI2vnCUj2U',
+        color: '#8c735a',
+      },
+    ],
+  },
+  {
+    id: 'ASCECFF',
+    entries: [
+      {
+        title: { original: "Әлемнің мейірімді парықсыздығы", transliteration: "Alemnin meyirimdi pariksyzdygy", translation: "The Gentle Indifference of the World", },
+        year: '2018',
+        group: { people: "Kazakh", language: "Kazakh", country: "Kazakhstan", },
+        info: `When her father commits suicide, country girl Saltanat is forced to travel to the city in search of the money that will spare her mother from jail. Accompanied by her childhood friend (and ardent admirer) Kuandyk, Saltanat soon learns how wide the gap between her ideals and the reality of contemporary Kazakhstan truly is.\nDir/Scr **ADILKHAN YERZHANOV**, Kazakhstan’s king of the offbeat and the absurd, is at his lyrical best in this tale of innocence corrupted. Yerzhanov’s trademarks—exquisite tableaux, deadpan humour, and humanist heart—are coupled here with a meta-cinematic riff on the western, the noir, and French New Wave.`,
+        watch: 'https://films.klassiki.online/the-gentle-indifference-of-the-world',
+        trailer: 'https://youtu.be/cuGLOAy6PUg',
+        color: '#c46b3b',
+        location: { x: 68.3, y: 24.5, name: 'Alatau Steppe', }
+      },
+      {
+        title: { original: "Бешкемпир", transliteration: "Beshkempir", translation: "Five Grannies", },
+        year: '1998',
+        group: { people: "Kyrgyz", language: "Kyrgyz", country: "Kyrgyzstan", },
+        info: `A young boy in a rural village discovers he is adopted. The film explores his coming-of-age journey as he navigates childhood mischief, his first crush, and the complex emotions surrounding his true parentage.\nDir/Scr **AKTAN ABDYKALYKOV** is a Kyrgyz filmmaker. The story of *Beshkempir* is based on his own life, having learned that his mother and father were not his biological parents at age 13.`,
+        watch: 'https://youtu.be/aLRTEUqa-q4',
+        trailer: 'https://www.facebook.com/100052319903979/videos/beshkempir-1998/344696701371229/',
+        color: '#db8b40',
+        location: { x: 67.9, y: 25.25, name: 'Bar-Bulak Village', }
+      },
+      {
+        title: { original: "Мадина", transliteration: "Madina", },
+        year: '2023',
+        group: { people: "Kazakh", language: "Kazakh", country: "Kazakhstan/Pakistan/India", },
+        info: `In trying to earn a living for her small family—an old grandmother, a withdrawn little brother, and a two-year-old daughter—Madina is ready to go against her moral principles. Her feelings are frozen by a cold winter inside her that seems to never end, until one day her brother makes a shocking revelation. The knowledge of the abuse to which he was subjected as a child changes everything for Madina and breaks the ice that covers her soul. The story is based on the real experiences of lead actress Madina Akylbekov.\nDir/Scr/Prod **AIZHAN KASSYMBEK** is a Kazakh filmmaker whose goal is to empower women in film, such as with the all-women crew of her first film *Fire* (2021).`,
+        watch: '',
+        trailer: 'https://mubi.com/en/films/madina/trailer',
+        color: '#49505c',
+        location: { x: 62.25, y: 24.3, name: 'Aktau City', }
+      },
+    ],
+  },
+  {
+    id: 'ASINCFF',
+    entries: [
+      {
+        title: { original: "Шар нохойн там", transliteration: "Shar nokhoin tam", translation: "Cave of the Yellow Dog", },
+        year: '2005',
+        group: { people: "Khalkha", language: "Mongolian", country: "Mongolia", },
+        info: `Nansal finds a small dog and names him Zochor. Her father refuses to let her keep it, believing it will bring the family bad luck and lead wolves to their sheep. Nansal decides to hide her four-legged friend, but things get complicated as winter approaches and the family prepares to move camps.\nDir/Scr **BYAMBASUREN DAVAA**, born 1971 in Ulaanbaatar, is a Mongolian filmmaker who tells stories embedded in the traditional life of the nomads of her country. The subjects of her movies also serve as amateur actors, playing mostly themselves, which positions her work somewhere between documentary and fiction.`,
+        watch: 'https://youtu.be/6RZlpZCzA3U',
+        trailer: 'https://youtu.be/MRiD5B2rKOg',
+        color: '#906b5f',
+        location: { x: 71.5, y: 20, name: 'Altai Region', }
+      },
+    ],
+  },
+  {
+    id: 'EUEACFF',
+    entries: [
+      {
+        title: { original: "Trzy kolory: Biały", translation: "Three Colours: White", },
+        year: '1994',
+        group: { people: "Polish", language: "Polish/French", country: "Poland", },
+        info: `*Biały*, the second in the Polish *Trzy kolory* film trilogy themed on French Revolutionary ideals, is a psychological comedy-drama depicting the humiliating circumstances in the life of Polish immigrant Karol Karol.\nDir/Scr **KRZYSZTOF KIEŚLOWSKI** was a filmmaker and screenwriter best known internationally for his television miniseries *Dekalog* and *Three Colors* films.`,
+        watch: 'https://www.max.com/movies/three-colors-white/69b9622e-2c90-4694-90f9-feaec2e307c3',
+        trailer: 'https://youtu.be/xECEAPfdqic',
+        color: '#363033',
+      },
+    ],
+  },
+  {
+    id: 'EUWECFF',
+    entries: [
+      {
+        title: { original: "Portrait de la jeune fille en feu", translation: "Portrait of a Lady on Fire", },
+        year: '2019',
+        group: { people: "French", language: "French", country: "France", },
+        info: `France, 1770. Marianne, a painter, is commissioned to do the wedding portrait of Héloïse, a young woman who has just left the convent. Héloïse is a reluctant bride-to-be and Marianne must paint without her knowing. She observes her by day, to paint the portrait in secret.\nDir/Scr **CÉLINE SCIAMMA** is a French filmmaker and screenwriter known for *Portrait de la jeune fille en feu* and *Petite Maman*. A  common theme in Sciamma's films is the fluidity of gender, sexual identity among girls and women, and the female gaze.`,
+        watch: 'https://www.kanopy.com/en/product/portrait-lady-fire-1',
+        trailer: 'https://youtu.be/R-fQPTwma9o',
+        color: '#78463e',
+      },
+    ],
+  },
+  {
+    id: 'OCAUCFF',
+    entries: [
+      {
+        title: { original: "Biniŋgili-gumbirri girrgili", translation: "Ten Canoes", },
+        year: '2006',
+        group: { people: "Yolŋu", language: "Djinba", location: "Arnhem Land, AU", },
+        info: `*Ten Canoes* tells an ancient Yolngu Aboriginal story, blending traditional myth with a modern-day narrative. The film follows a group of men on a goose egg hunt, where an elder tells a story from the past about a young man coveting his brother's wife, illustrating the consequences of wrong desires and tribal law. The film uses a unique storytelling structure, switching between black and white for the present-day hunt and color for the ancient story, all while showcasing the beauty of Arnhem Land and the Yolngu culture.\nThe film's dialogue is in the Ganalbingu dialect of the Djinba language, with David Gulplil providing narration in English, though an alternate version of the film exists with narration in his Mandjalpingu dialect.`,
+        watch: 'https://youtu.be/2AMmHrFdyBw',
+        trailer: 'https://youtu.be/tH_MY8FJuYo',
+        color: '#663c25',
+        location: { x: 86.4, y: 64, name: 'Arafura Swamp', }
+      },
+    ],
+  },
+  {
+    id: 'OCMDCFF',
+    entries: [
+      {
+        title: { original: "Rehefa mihaona ny ranomasina sy ny kintana", translation: "When the Stars Meet the Sea", },
+        year: '1996',
+        group: { language: "Malagasy", country: "Madagascar", },
+        info: `This contemplative and poetic film traces the destiny of Kapila, an outcast child who had been deemed to have supernatural powers of destruction because of the timing of his solar eclipse birth.\nDir/Scr **RAYMOND RAJAONARIVELO** is a notable Malagasy film director best known for his films *Quand les étoiles rencontrent la mer* and *Taba Taba*.`,
+        watch: 'https://www.kanopy.com/en/product/quand-les-etoiles-rencontrent-la-mer',
+        trailer: 'https://youtu.be/WSId_DLWtIs',
+        color: '#a69577',
+        location: { x: 62.55, y: 68.3, name: 'Antananarivo', },
+      },
+    ],
+  },
+  {
+    id: 'OCMLCFF',
+    entries: [
+      {
+        title: 'Tanna',
+        year: '2015',
+        group: { people: "Ni-Vanuatu", language: "Nivhaal/Nafe", country: "Vanuatu", },
+        info: `Wawa, a young girl from Yakel on Tanna Island, falls in love with her community leader's grandson, Dain. When a war between factions escalates, Wawa is unknowingly betrothed as part of a peace deal. The lovers run away, but are pursued by enemies intent on killing them.\nThe cast of the film are all Ni-Vanuatu locals from the village of Yakel, and the film's plot is based on events that ocurred there in the 1980s that changed the way the community keeps *Kastom* (traditional cultural practices) to this day.`,
+        watch: 'https://www.kanopy.com/video/13866690',
+        trailer: 'https://youtu.be/Tb3Vslnviwo',
+        color: '#313d22',
+        location: { x: 95.293, y: 68.8, name: 'Tanna, Vanuatu' },
+      },
+    ],
+  },
+  {
+    id: 'OCMCCFF',
+    entries: [
+      {
+        title: { original: "Ña Noniep", translation: "I am the Good Fairy", },
+        year: '2009',
+        group: { people: "Marshallese", language: "Marshallese", country: "Marshall Islands", },
+        info: `An original feature film made in the Marshall Islands, performed by island residents, and produced to support local education, interweaves Marshallese folklore with the challenges faced by youth in the islands today.\n*Ña Noniep* deals with the spiritual battle between a *ri‑anijnij* (an evil Marshallese maker of black magic) and a *noniep* (a Marshallese fairy-like creature) for the soul of a 13-year old boy, Liki. The film portrays Liki as an "off-the-chart" brilliant student who can solve math problems without using pencil or paper and who can read a thick novel in a few days\nThe Marshallese language film, with English subtitles, stars Randon Jack, Lulani Ritok, Kyle Trevor, Netha Gideon, Matiti Johnson, Alson Kelen and Sarah Enyeart. All of the music in the film was performed by four eighth-grade girls—Kery Ann Lejjena, Carly Ann Note, Lulani Note and Cinderella Lajidrik—from the Majuro Cooperative School, a private, secular school presently serving grades pre-K through 9th.`,
+        watch: 'https://youtu.be/-bHfr11hfg8',
+        trailer: 'https://youtu.be/CMiJlDi5NaY',
+        color: '#918e89',
+        location: { x: 96.6, y: 50.3, name: 'Majuro' },
+      },
+    ],
+  },
+  {
+    id: 'OCPLCFF',
+    entries: [
+      {
+        title: { original: "O Le Tulafale", translation: "The Orator", },
+        year: '2011',
+        group: { people: "Samoan", language: "Samoan", country: "Samoa", },
+        info: `*O Le Tulafale* is a contemporary drama about courage, forgiveness, and love. Saili lives a humble life with his beloved wife and daughter in an isolated traditional village on the islands of Samoa, but everything changes when he is denied his father's chiefly status and his family plantation is threatened.\nDir/Scr **TUSI TAMASESE** is a Samoan filmmaker of high chiefly descent, of the Tupua Tamasese lineage. His first feature film, *O Le Tulafale*, was financed in part by the Samoan government and depicts *Faʻa Sāmoa*, the Samoan Way.`,
+        watch: 'https://youtu.be/TfkjO-jcjSM',
+        trailer: 'https://youtu.be/AGXopPdTAGs',
+        color: '#917146',
       },
     ],
   },
 ];
+
+const globFeatFilms: movieType[] = [
+  {
+    id: 'OCPLGFF',
+    entries: [
+      {
+        title: 'Next Goal Wins',
+        year: '2023',
+        group: { language: "English", location: "American Samoa, US", },
+        info: `The story of the infamously terrible American Samoa soccer team, known for a brutal 2001 FIFA match they lost 31-0, and their attempt to turn around with a new coach.\nThough *Next Goal Wins* doesn't qualify as a cultural feature film—both despite and because of its lampooning and unavoidable perpetuation of the white savior trope, as well as its mostly non-Polynesian creative team—its hilariously heartwarming and culturally didactic storytelling pushed the movie above the threshold of inclusion as a globalization feature film.`,
+        watch: 'https://www.amazon.com/gp/video/detail/amzn1.dv.gti.5b099d27-081d-4506-96db-762dfe3f3760',
+        trailer: 'https://youtu.be/pRH5u5lpArQ',
+        color: '#366e37',
+      },
+    ],
+  },
+];
+
+export const movies: movieType[] = [...cultFeatFilms, ...globFeatFilms];
+
+/*
+
+{
+  id: '',
+  entries: [
+    {
+      title: '',
+      year: '',
+      group: { people: "", language: "", country: "", },
+      info: ``,
+      watch: '',
+      trailer: '',
+      color: '',
+    },
+  ],
+},
+
+*/

@@ -1,39 +1,141 @@
 .shelf {
+  position: relative;
   width: 100%;
-  margin-bottom: 4vw;
+  margin-bottom: 3.3vw;
 }
 .shelf h2 {
   font-size: 2.5vw;
-  margin-left: 5vw;
+  margin-left: 7.5vw;
+  line-height: 1em;
 }
 .shelf ul {
   width: 100%;
   height: auto;
-  margin-top: 0.5vw;
+  padding-top: 1.4vw;
+  padding-bottom: 1.4vw;
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-left: 5vw;
+  padding-left: 7.5vw;
+  padding-right: 5vw;
+  scroll-padding-left: 7.5vw;
+  scroll-padding-right: 5vw;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scroll-snap-type: x mandatory;
 }
 .shelf li {
   height: 20vw;
   width: 15vw;
   margin-right: 2.5vw;
-  overflow: hidden;
   /* transition: width 100ms ease, height 100ms ease; */
   transition: transform 100ms ease;
   cursor: pointer;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+
 }
 .shelf img {
   min-width: 100%;
   min-height: 100%;
 }
-.shelf li:hover {
-  /* height: 24vw;
-  width: 18vw; */
-  transform: scale(1.2);
+.shelf li > div {
+  transition: transform 100ms ease;
+  border-radius: 0.5vw;
+  overflow: hidden;
+}
+.shelf li > div:hover {
+  transform: scale(1.13);
 }
 .shelf.focused li {
   height: 30vw;
   width: 22.5vw;
+}
+
+.shelf button:first-of-type, .shelf button:nth-of-type(2) {
+  position: absolute;
+  bottom: 0;
+  width: 5.02vw;
+  height: 23vw;
+  display: flex;
+  align-items: center;
+}
+.shelf button:first-of-type {
+  left: 0;
+}
+.shelf button:nth-of-type(2) {
+  right: 0;
+}
+.shelf button > div {
+  height: 20vw;
+  width: 100%;
+  opacity: 0.5;
+  font-size: 3vw;
+  cursor: pointer;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shelf button span {
+  display: inline-block;
+  width: 3.5vw;
+  height: 3.5vw;
+  line-height: calc(3.5vw - 0.3vw);
+  border: 0.15vw solid var(--color-front);
+  border-radius: 50%;
+  background-color: var(--color-mid-3);
+  transition: transform 100ms linear;
+}
+.shelf button > div:hover {
+  opacity: 1;
+}
+.shelf button > div:hover span {
+  transform: scale(1.1);
+  filter: drop-shadow(0 -0.5vw 0.1vw rgba(0,0,0,0.5));
+}
+
+
+
+.stack {
+  position: relative;
+  margin-top: 1vw;
+}
+.stack ul {
+  width: 100%;
+  height: fit-content;
+  max-height: 30.5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: flex-start;
+  overflow-y: scroll;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+}
+.stack li {
+  width: 30%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.stack img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.stack li > div {
+  border-radius: 0.5vw;
+  overflow: hidden;
+}
+.stack li > div:hover, .stack li > div.active {
+  outline: 0.3vw solid var(--color-front);
 }

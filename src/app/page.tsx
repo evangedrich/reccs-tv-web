@@ -8,8 +8,11 @@ import { searchData } from '@/app/functions/data-prep';
 export default function Home() {
   return (
     <div>
-      <Shelf data={searchData(['AF'])} top={true} title={'All Movies'} />
-      <Shelf data={searchData(['AFNO'])} top={false} title={'North African Cinema'} />
+      <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} />
+      <Shelf data={searchData(['AM'])} top={false} title={'American Cinema'} shuffled={true} />
+      <Shelf data={searchData(['AS','EU'])} top={false} title={'Eurasian Cinema'} shuffled={true} />
+      <Shelf data={searchData(['AF'])} top={false} title={'African Cinema'} shuffled={true} />
+      <Shelf data={searchData(['OC'])} top={false} title={'Oceanian Cinema'} shuffled={true} />
     </div>
   );
 }

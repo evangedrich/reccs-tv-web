@@ -28,6 +28,7 @@
 }
 .navButtons .active {
   background-color: var(--color-mid-3);
+  box-shadow: inset 0 0 0 0.1vw var(--color-mid-2);
 }
 
 .title {
