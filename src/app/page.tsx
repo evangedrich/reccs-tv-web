@@ -10,6 +10,10 @@ import { searchData } from '@/app/functions/data-prep';
 export default function Home() {
   const [showWindow, setShowWindow] = useState(false);
   const [clickedKey, setClickedKey] = useState('');
+  /*let filmList = [];
+  searchData(['']).forEach(film => {
+    filmList.push(film.title);
+  }); console.log(filmList);*/
   return (
     <div>
       <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />

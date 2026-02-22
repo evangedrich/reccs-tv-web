@@ -52,6 +52,10 @@
 .shelf li > div:hover {
   transform: scale(1.13);
 }
+.shelf li > div:active {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
 .shelf.focused li {
   height: 30vw;
   width: 22.5vw;
@@ -152,14 +156,21 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.3);
   z-index: 50;
   visibility: hidden;
-  opacity: 0;
-  transition: opacity 300ms, visibility 300ms;
+  transition: visibility 300ms;
+  overflow: scroll;
 }
 .windowBg.active {
   visibility: visible;
+  opacity: 1;
+}
+.windowBg > div:first-of-type {
+  background-color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.windowBg.active > div:first-of-type {
   opacity: 1;
 }
 .window {
@@ -171,36 +182,48 @@
   border-radius: 1.5vw 1.5vw 0 0;
   box-shadow: inset 0 0 0 0.1vw var(--color-mid);
   transform: translateY(100%);
-  transition: transform 300ms ease-out;
-  overflow-y: auto;
+  transition: transform 300ms ease;
   padding: 6vw;
+  padding-top: 4vw;
 }
 .windowBg.active .window {
   transform: translateY(0);
 }
 
 .window h1 {
-  font-size: 6vw;
-  line-height: 1.1em;
-  font-weight: 600;
-  margin-bottom: 0.5vw;
+  font-size: 5.5vw;
+  line-height: 1.05em;
+  font-weight: 800;
+  margin-bottom: 0.55vw;
 }
 .window h2 {
   font-size: 1.8vw;
   font-weight: 300;
-  margin-bottom: 2vw;
+  line-height: 1.2em;
+  mergin-top: 0.5em;
 }
 .window h3 {
   font-weight: 400;
   font-size: 1.2vw;
-  margin-bottom: 2vw;
+  margin-top: 1.8vw;
+  margin-bottom: 1.8vw;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
 }
 .window h3 > span {
   display: inline-block;
-  margin-right: 1vw;
+  margin-right: 1.4vw;
+}
+.window h3 > span > span {
+  vertical-align: 0.05vw;
 }
 .window p {
-  font-size: 1.2vw;
+  font-size: 1.4vw;
+  margin-bottom: 0.5em;
+  line-height: 1.25em;
+}
+.window p > b {
+  font-weight: 600;
 }
 .window .wrapper {
   display: flex;
@@ -208,7 +231,7 @@
 .window .wrapper > div:first-of-type {
   flex-grow: 1;
 }
-.window .wrapper > div:last-of-type {
+.window .wrapper > div:nth-of-type(2) {
   flex-shrink: 0;
   width: 24vw;
   height: calc(24vw * 4 / 3);
