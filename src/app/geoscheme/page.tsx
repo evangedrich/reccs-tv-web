@@ -145,7 +145,7 @@ export default function GeoschemePage() {
 
       </div>
 
-      <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} />
+      <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} changeKey={setClickedKey} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function Home() {
       <Shelf data={searchData(['AS','EU'])} top={false} title={'Eurasian Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['AF'])} top={false} title={'African Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['OC'])} top={false} title={'Oceanian Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
-      <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} />
+      <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} changeKey={setClickedKey} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ interface flatMovieType {
   title: { original: string, transliteration?: string, translation?: string, } | string,
   year: string,
   runtime: number,
+  genre: string[],
   group: { people?: string, language?: string, country?: string, location?: string, },
   info: string,
   watch: string,
@@ -31,6 +32,7 @@ export const searchData = (query: string[]) => {
           title: entry.title,
           year: entry.year,
           runtime: entry.runtime,
+          genre: entry.genre,
           group: entry.group,
           info: entry.info,
           watch: entry.watch,
@@ -57,4 +59,7 @@ export const shuffle = (arr) => {
 // returns correct primary title
 export const getMainTitle = (title) => {
   return (typeof title === 'string') ? title : title.original;
+};
+export const getMovieLink = (link) => {
+  return (Array.isArray(link)) ? link[0] : link;
 };
