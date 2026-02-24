@@ -63,3 +63,23 @@ export const getMainTitle = (title) => {
 export const getMovieLink = (link) => {
   return (Array.isArray(link)) ? link[0] : link;
 };
+export const getPlatform = (url) => {
+  let name = "[Unknown]";
+  if (url.includes("kanopy")) { name="Kanopy"; }
+  else if (url.includes("netflix")) { name="Netflix"; }
+  else if (url.includes("tv.apple")) { name="Apple TV"; }
+  else if (url.includes("amazon")) { name="Amazon Prime"; }
+  else if (url.includes("youtu.be")) { name="Youtube"; }
+  else if (url.includes("klassiki")) { name="Klassiki"; }
+  else if (url.includes("max")) { name="HBO Max"; }
+  else if (url.includes("tubitv")) { name="Tubi"; }
+  else if (url.includes("vimeo")) { name="Vimeo"; }
+  else if (url.includes("archive")) { name="Internet Archive"; }
+  else if (url.includes("hoopla")) { name="Hoopla"; }
+  else if (url.includes("fawesome")) { name="Fawesome TV"; }
+  else if (url.includes("mubi")) { name="MUBI"; }
+  else if (url.includes("hulu")) { name="Hulu"; }
+  else if (url.includes("criterion")) { name="The Criterion Channel"; }
+  else if (url.includes("fandango")) { name="Fandango at Home"; }
+  return name;
+};

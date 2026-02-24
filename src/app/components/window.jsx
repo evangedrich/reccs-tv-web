@@ -4,12 +4,15 @@ import { notoSans, notoEmoji } from '@/app/ui/fonts';
 import { searchData, getMainTitle, getMovieLink } from '@/app/functions/data-prep';
 import { textParser, runtimeToString, idToSubregion, getNeighbors } from '@/app/functions/text-prep';
 import Image from 'next/image';
+import StreamingServices from '@/app/components/stream';
 import Suggestions from '@/app/components/suggestions';
 
 const dummyMovie = {
   id: 'AFCECFF',
   title: { original: 'Original Title', transliteration: 'Transliterated Title', translation: 'Translated Title', },
   year: '1996',
+  runtime: 100,
+  genre: ['Great','Classic'],
   group: { people: 'Nobody', language: 'Nothing', location: 'Nowhere', },
   info: 'This is a short description of a movie.',
   watch: 'https://evangedrich.com/',
@@ -67,11 +70,14 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
               {'location' in data.group ? <span title='Location'><span className={notoEmoji.className}>📍</span>{data.group.location}</span> : <></>}
             </h3>
             <div>
-              <span><a href={(data.watch)} target="_blank">▶&nbsp; Play</a></span>
-              <span><span className={notoEmoji.className}>▶︎</span>&nbsp; Trailer</span>
+              {data.watch!==''
+                ? <a href={getMovieLink(data.watch)} target="_blank">▶&nbsp; Play</a>
+                : <span className={styles.inactive}>▶&nbsp; Not Available</span>
+              }
+              <span><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</span>
               <span onClick={clickInfo}>⋯&nbsp; More info</span>
             </div>
-            <div ref={descRef}>{textParser(data.info)}</div>
+            <div ref={descRef}>{getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}</div>
           </div>
           <div>
             <Image
@@ -84,13 +90,14 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
           </div>
         </div>
         <div className={styles.wrapper2}>
-          <h4>Where to Watch</h4>
-          <p>links</p>
+          {data.watch!=='' ? <><h4>Where to Watch</h4>
+          <StreamingServices data={data.watch} /></> : <></>}
           <h4>Neighboring Subregions</h4>
           <Suggestions data={searchData(getNeighbors(data.id))} setWindow={changeShow} setID={changeKey} windowRef={windowRef} suggRef={suggRef} descRef={descRef} />
           {/* <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} /> */}
           <h4>More Info</h4>
-          <div><p><b><i>Full description:</i></b></p>{textParser(data.info)}</div>
+          <div><span><i><b>Full description</b>:</i></span>&nbsp; {textParser(data.info)}</div>
+          <div><span><i><b>Genre tags</b>:</i></span>&nbsp; <p>{data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p></div>
           <div ref={infoRef}></div>
         </div>
         <button className={styles.closeWindow} onClick={() => changeShow(false)}>✕</button>
