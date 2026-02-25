@@ -1,0 +1,128 @@
+.searchPage {
+  margin: auto;
+  width: 95vw;
+  height: calc(100vh - 10vw);
+  display: flex;
+  align-items: center;
+}
+.searchPage > div:nth-of-type(1) {
+  flex-basis: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchPage > div:nth-of-type(2) {
+  flex-basis: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 5vw;
+}
+
+.keyboard {
+  width: 30vw;
+  height: 35vw;
+  font-weight: 400;
+}
+.keyboard ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.keyboard li {
+  flex-basis: 5vw;
+  height: 5vw;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyboard li button {
+  width: 4vw;
+  height: 4vw;
+  border-radius: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 100ms linear;
+}
+.keyboard button:hover {
+  background-color: var(--color-mid);
+  transform: scale(calc((4vw + 0.3vw) / 4vw));
+}
+.keyboard button:active {
+  background-color: var(--color-mid-2);
+  transform: scale(calc((4vw + 0.15vw) / 4vw));
+}
+.keyboard div {
+  display: flex;
+}
+.keyboard div > div {
+  height: 5vw;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyboard div > div:nth-of-type(1) {
+  width: 20vw;
+}
+.keyboard div > div:nth-of-type(2) {
+  width: 10vw;
+}
+.keyboard div > div button {
+  height: 4vw;
+  border-radius: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 100ms linear;
+}
+.keyboard div > div:nth-of-type(1) button {
+  width: 18vw;
+}
+.keyboard div > div:nth-of-type(2) button {
+  width: 8vw;
+}
+.keyboard div > div:nth-of-type(1) button:hover {
+  transform: scale(calc((18vw + 0.4vw) / 18vw));
+}
+.keyboard div > div:nth-of-type(1) button:active {
+  transform: scale(calc((18vw + 0.15vw) / 18vw));
+}
+.keyboard div > div:nth-of-type(2) button:hover {
+  transform: scale(calc((8vw + 0.4vw) / 8vw));
+}
+.keyboard div > div:nth-of-type(2) button:active {
+  transform: scale(calc((8vw + 0.15vw) / 8vw));
+}
+
+.formInput {
+  width: 55vw;
+  height: 40vw;
+  mask-image: linear-gradient(to bottom, var(--color-back) calc(100% - 5vw), transparent calc(100% - 1vw));
+}
+.formInput input  {
+  width: 100%;
+  height: 4vw;
+  line-height: 3vw;
+  margin-bottom: 1vw;
+  padding: 0.5vw;
+  border-bottom: 0.2vw solid var(--color-front);
+  font-size: 2vw;
+  outline: none;
+  box-shadow: none;
+  caret-shape: block;
+  caret-color: var(--color-front);
+  text-transform: lowercase;
+}
+.formInput input::selection {
+  color: var(--color-back);
+  background-color: var(--color-front);
+}

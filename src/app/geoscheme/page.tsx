@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import { fahkwang, inter, openSans } from '@/app/ui/fonts';
 import styles from '@/app/ui/geoscheme.module.css';
+import svgMap from '@/../public/map.svg';
+import Image from 'next/image';
 import Link from 'next/link';
 import Stack from '@/app/components/stack';
 import Window from '@/app/components/window';
-import { subregions } from '@/app/lib/subregions';
+import { subregions, getDesc } from '@/app/lib/subregions';
 import { searchData } from '@/app/functions/data-prep';
 
-const PinSVG = ({ isActive }) => {
+const PinSVG = ({ isActive }: { isActive: boolean }) => {
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={`${styles.pin} ${isActive?styles.active:''}`}>
       <path d='M12 21.7C12 21.7 4 14.3 4 9C4 4.6 7.6 1 12 1C16.4 1 20 4.6 20 9C20 14.3 12 21.7 12 21.7Z' stroke='var(--color-front)' fill='var(--color-mid-3)' />
@@ -20,6 +22,7 @@ const PinSVG = ({ isActive }) => {
 
 export default function GeoschemePage() {
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [fakeMapLoaded, setFakeMapLoaded] = useState(false);
   const [currSubr, setCurrSubr] = useState('');
   const [currSubrId, setCurrSubrId] = useState('');
   const [zoom, setZoom] = useState(1);
@@ -28,20 +31,21 @@ export default function GeoschemePage() {
   const [currLoc, setCurrLoc] = useState('');
   const [showWindow, setShowWindow] = useState(false);
   const [clickedKey, setClickedKey] = useState('');
-  function rgbToHex(rgb) {
+  function rgbToHex(rgb: string) {
     const match = rgb.match(/\d+/g);
     if (!match) return null;
     const r = parseInt(match[0]);
     const g = parseInt(match[1]);
     const b = parseInt(match[2]);
-    const componentToHex = (c) => {
+    const componentToHex = (c: number) => {
       const hex = c.toString(16);
       return hex.length === 1 ? "0" + hex : hex;
     };
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
   }
   const handleMapLoad = (e: React.SyntheticEvent<HTMLObjectElement>) => {
-    setTimeout(() => { setMapLoaded(true); }, 1);
+    // setTimeout(() => { setMapLoaded(true); }, 1);
+    setMapLoaded(true);
     const svgDoc = e.currentTarget.contentDocument;
     if (!svgDoc) return;
     let color = '#000000';
@@ -49,7 +53,7 @@ export default function GeoschemePage() {
     let allColors: string[] = [];
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
-      if (!allColors.includes(thisColor) && thisColor) { allColors.push(thisColor); }
+      if (thisColor && !allColors.includes(thisColor)) { allColors.push(thisColor); }
     });
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
@@ -58,30 +62,32 @@ export default function GeoschemePage() {
     });
   };
   const val = Math.floor(Math.random()*10000);
-  const clicked = (e,color,coord,zoomAmount,name,id) => {
-    const svgDoc = e.target.closest(`.${styles.mapContainer}`).querySelector('object')?.contentDocument;
-    const allPaths = svgDoc.querySelectorAll(`path`);
-    const irrelevantPaths = svgDoc.querySelectorAll(`.not_${color.slice(1)}`);
-    if (zoom===1) {
-      setOrigin(coord);
-      setCurrSubr(name);
-      setCurrSubrId(id);
-      setTimeout(() => { setZoom(zoomAmount); }, 200);
-      setTimeout(() => { irrelevantPaths.forEach(path => { path.style.opacity = 0.5; }); setReady(true); }, 700);
+  const clicked = (e: React.UIEvent<HTMLElement>, color: string, coord: string, zoomAmount: number, name: string, id: string) => {
+    const svgDoc = e.currentTarget.closest(`.${styles.mapContainer}`)?.querySelector('object')?.contentDocument;
+    if (svgDoc) {
+      const allPaths = svgDoc.querySelectorAll(`path`);
+      const irrelevantPaths = svgDoc.querySelectorAll(`.not_${color.slice(1)}`);
+      if (zoom===1) {
+        setOrigin(coord);
+        setCurrSubr(name);
+        setCurrSubrId(id);
+        setTimeout(() => { setZoom(zoomAmount); }, 200);
+        setTimeout(() => { (irrelevantPaths as NodeListOf<SVGPathElement>).forEach(path => { path.style.opacity = '0.5'; }); setReady(true); }, 700);
+      }
     }
   };
   const closeZoom = () => {
     setReady(false);
-    document.querySelector(`object`)?.contentDocument.querySelectorAll(`path`).forEach(path => { path.style.opacity = 1; });
+    document.querySelector(`object`)?.contentDocument?.querySelectorAll(`path`).forEach(path => { path.style.opacity = '1'; });
     setTimeout(() => { setZoom(1); }, 500);
     setTimeout(() => { setOrigin('0 0'); }, 1200);
   };
   const transformObj = { transform:`scale(${zoom})`, transformOrigin:origin, transition:'transform 500ms ease-in-out', };
-  const getZoom = (id) => { return subregions.find(subr => id.slice(0,4)===subr.id).zoom.amount; }
-  const calcPinZoom = (z) => { return z<=3.5 ? 1-0.444*(z-3.5) : 1-0.2*(z-3.5) };
-  const filmLocations = [];
-  searchData(['']).forEach(film => { if (film.location!==undefined) {filmLocations.push({ id: film.id, x: film.location.x, y: film.location.y, name: film.location.name, zoom: getZoom(film.id), });} });
-  const pinOver = (id) => { setCurrLoc(id); };
+  const getZoom = (id: string) => { return subregions.find(subr => id.slice(0,4)===subr.id)?.zoom.amount ?? 1; }
+  const calcPinZoom = (z: number) => { return z<=3.5 ? 1-0.444*(z-3.5) : 1-0.2*(z-3.5) };
+  const filmLocations: { id: string, x: number, y: number, name: string, zoom: number, }[] = [];
+  searchData(['']).forEach(film => { if (film.location!==undefined) {filmLocations.push({ id: film.id, x: film.location.x, y: film.location.y, name: film.location.name ?? '', zoom: getZoom(film.id), });} });
+  const pinOver = (id: string) => { setCurrLoc(id); };
   const pinLeave = () => { setCurrLoc(''); };
   return (
     <div style={{minHeight:'calc(100vh - 8vw)',height:'fit-content',display:'flex',alignItems:'center'}}>
@@ -90,12 +96,22 @@ export default function GeoschemePage() {
         <div className={styles.textContainer} style={{width:zoom===1?'0%':'40%',}}>
           <div className={`${styles.text} ${inter.className}`}>
             <h2>{currSubr}</h2>
-            <p>This is a description about this subregion.</p>
-            <Stack data={searchData([currSubrId])} matchLocation={currLoc} locSetter={setCurrLoc} showWindow={setShowWindow} setID={setClickedKey} />
+            <p style={{fontSize:'1.3vw',lineHeight:'1.2em'}}>{getDesc(currSubrId)!==''?getDesc(currSubrId):'This is a description about this subregion.'}</p>
+            <Stack data={searchData([currSubrId])} top={false} shuffled={false} matchLocation={currLoc} locSetter={setCurrLoc} showWindow={setShowWindow} setID={setClickedKey} isSearch={false} />
           </div>
         </div>
 
-        <div className={`${styles.mapContainer}`} style={{opacity:mapLoaded?'1':'0',transition:'opacity 600ms ease-in-out',boxShadow:zoom===1?'none':'inset 0 0 0 0.1vw var(--color-mid-2)'}}>
+        <div className={``} style={{display:zoom!==1?'none':'block',opacity:mapLoaded?'0':'1',}}>
+          <img src="/map.svg" alt="Geoscheme movie map" className="absolute top-0 left-0 w-[92.95vw] ml-[1vw]" style={{aspectRatio: "16 / 7.05"}} fetchPriority="high" onLoad={() => setFakeMapLoaded(true)} />
+          <div className={`${styles.mapLabels} ${openSans.className}`}>{subregions.map(subregion => (
+            <button
+              key={`selectFake${subregion.id}`}
+              style={{left:`${subregion.text.x+(50-subregion.text.x)*0.022}%`,top:`${subregion.text.y}%`,display:fakeMapLoaded?'block':'none',}}
+            >{subregion.text.el}</button>
+          ))}</div>
+        </div>
+
+        <div className={`${styles.mapContainer}`} style={{opacity:mapLoaded?'1':'0',boxShadow:zoom===1?'none':'inset 0 0 0 0.1vw var(--color-mid-2)'}}>
           <div className={`w-full h-full`} style={transformObj}>
             <object
               key={`map${val}`}

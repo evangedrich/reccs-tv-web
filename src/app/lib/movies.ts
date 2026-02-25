@@ -1,4 +1,4 @@
-interface movieType {
+export interface movieType {
   id: string,
   entries: {
     title: { original: string, transliteration?: string, translation?: string, } | string,
@@ -7,10 +7,10 @@ interface movieType {
     genre: string[],
     group: { people?: string, language?: string, country?: string, location?: string, },
     info: string,
-    watch: string,
+    watch: string | string[],
     trailer: string,
     color?: string,
-    location?: { x: number, y: number, name?: string, },
+    location?: { x: number, y: number, name: string, },
   }[],
 }
 
@@ -68,7 +68,7 @@ const cultFeatFilms: movieType[] = [
         title: { original: "Inxeba", translation: "The Wound", },
         year: '2017',
         runtime: 88,
-        genre: ['Drama', 'LGBTQ+', 'Romance'],
+        genre: ['Drama', 'LGBTQ+', 'Romance', 'Queer'],
         group: { language: "Xhosa", country: "South Africa", },
         info: `Xolani, a lonely factory worker, joins the men of his community in the mountains of the Eastern Cape to initiate a group of teenage boys into manhood in the Xhosa *Ulwaluko* ceremony. When a defiant initiate from the city discovers his best kept secret, Xolani’s entire existence begins to unravel.\nThe film is based on a novel by Thando Mgqolozana, who also co-wrote the script, and stars non-binary musician, novelist, and actor Nakhane in a critically-acclaimed performance.`,
         watch: ['https://www.kanopy.com/en/product/wound-0','https://www.amazon.com/gp/video/detail/B076FC4399'],
@@ -165,7 +165,7 @@ const cultFeatFilms: movieType[] = [
         title: "Drunktown's Finest",
         year: '2014',
         runtime: 95,
-        genre: ['Drama', 'Coming-of-Age'],
+        genre: ['Drama', 'Coming-of-Age', 'LGBTQ+', 'Queer'],
         group: { people: "Diné", language: "Navajo", location: "New Mexico, US", },
         info: `Three young Navajos—an adopted Native girl, a young father-to-be, and a trans woman who dreams of being a model—strive to escape the hardships of life on an Indian reservation. Nizhoni seeks out her past, well after being adopted by a white Christian family; Felixia pursues a spot in the “women of the tribe” calendar; and Sickboy is headed to basic training so he can take care of his soon-to-be-born child.\nDir/Scr **SYDNEY FREELAND** is a Navajo filmmaker born in Gallup, NM, whose work often focuses on portraying authentic and complex stories about the queer and indigenous communities. She named her first feature-length film *Drunktown's Finest* in response to a *20/20* segment on ABC News calling her hometown of Gallup “Drunktown, USA”.`,
         watch: ['https://vimeo.com/groups/fms620/videos/241461186','https://www.amazon.com/gp/video/detail/B01BOD50ME'],
@@ -330,7 +330,7 @@ const cultFeatFilms: movieType[] = [
         title: { original: "霸王別姬", transliteration: "Bà Wáng Bié Jī", translation: "Farewell, My Concubine", },
         year: '1992',
         runtime: 171,
-        genre: ['Romantic Drama', 'Historical Epic'],
+        genre: ['Romantic Drama', 'Historical Epic', 'LGBTQ+', 'Queer'],
         group: { people: "Han Chinese", language: "Mandarin", country: "China", },
         info: `In 1924, young Cheng Dieyi begins training at the Beijing Opera House at the same time as Duan Xiaolou. Cheng specializes in playing female parts, often against Duan's commanding male leads. Over the next 50 years, the two men maintain a complicated relationship as China undergoes turbulent changes.\nDir. **CHÉN KĂIGĒ** is a Chinese filmmaker and leading figure in the fifth generation of Chinese directors, known for his visual flair and epic storytelling.`,
         watch: ['https://www.criterionchannel.com/farewell-my-concubine','https://www.hoopladigital.com/movie/farewell-my-concubine-leslie-cheung/17969092','https://www.kanopy.com/en/product/farewell-my-concubine','https://tv.apple.com/us/movie/farewell-my-concubine/umc.cmc.g2avwzc9mvl1h7oo2hms3nfh'],
@@ -418,7 +418,7 @@ const cultFeatFilms: movieType[] = [
         year: '2022',
         runtime: 182,
         genre: ['Action', 'Period Drama', 'Musical Epic'],
-        group: { people: "Telugu", language: "Telugu", location: "Telangana, IN", },
+        group: { people: "Telugu", language: "Telugu", location: "Telangana, India", },
         info: `An epic tale of a fearless Gōṇḍī revolutionary leader on a dangerous mission, who confronts a steely Indian Imperial Police officer serving the British Raj. *RRR* is a historical fiction film featuring characters inspired by two real-life Indian freedom fighters.\nDir/Scr **S. S. RAJAMOULI**, whose Telugu-language films rank among the most expensive and the highest grossing in India, delivers just about every possible mode of cinematic entertainment in this expansive period action drama.`,
         watch: 'https://www.netflix.com/title/81476453',
         trailer: 'https://youtu.be/NgBoMJy386M',
@@ -512,7 +512,7 @@ const cultFeatFilms: movieType[] = [
         genre: ['Comedy-Drama', 'Mystery'],
         group: { people: "Polish", language: "Polish/French", country: "Poland", },
         info: `*Biały*, the second in the Polish *Trzy kolory* film trilogy themed on French Revolutionary ideals, is a psychological comedy-drama depicting the humiliating circumstances in the life of Polish immigrant Karol Karol.\nDir/Scr **KRZYSZTOF KIEŚLOWSKI** was a filmmaker and screenwriter best known internationally for his television miniseries *Dekalog* and *Three Colors* films.`,
-        watch: 'https://www.max.com/movies/three-colors-white/69b9622e-2c90-4694-90f9-feaec2e307c3',
+        watch: ['https://www.max.com/movies/three-colors-white/69b9622e-2c90-4694-90f9-feaec2e307c3','https://www.criterionchannel.com/three-colors-white'],
         trailer: 'https://youtu.be/xECEAPfdqic',
         color: '#363033',
         location: { x: 54.15, y: 18, name: 'Warsaw', }
@@ -526,7 +526,7 @@ const cultFeatFilms: movieType[] = [
         title: { original: "Portrait de la jeune fille en feu", translation: "Portrait of a Lady on Fire", },
         year: '2019',
         runtime: 21,
-        genre: ['Period Drama', 'Romance'],
+        genre: ['Period Drama', 'Romance', 'LGBTQ+', 'Queer'],
         group: { people: "French", language: "French", country: "France", },
         info: `France, 1770. Marianne, a painter, is commissioned to do the wedding portrait of Héloïse, a young woman who has just left the convent. Héloïse is a reluctant bride-to-be and Marianne must paint without her knowing. She observes her by day, to paint the portrait in secret.\nDir/Scr **CÉLINE SCIAMMA** is a French filmmaker and screenwriter known for *Portrait de la jeune fille en feu* and *Petite Maman*. A  common theme in Sciamma's films is the fluidity of gender, sexual identity among girls and women, and the female gaze.`,
         watch: 'https://www.kanopy.com/en/product/portrait-lady-fire-1',
@@ -557,7 +557,7 @@ const cultFeatFilms: movieType[] = [
     id: 'OCMDCFF',
     entries: [
       {
-        title: { original: "Rehefa mihaona ny ranomasina sy ny kintana", translation: "When the Stars Meet the Sea", },
+        title: { original: "Rehefa mihaona ny ranomasina sy ny kintana", transliteration: "Quand les étoiles rencontrent la mer", translation: "When the Stars Meet the Sea", },
         year: '1996',
         runtime: 86,
         genre: ['Fantasy', 'Myth', 'Drama'],

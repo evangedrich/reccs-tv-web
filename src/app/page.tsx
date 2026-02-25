@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
-      <Shelf data={searchData(['AM'])} top={false} title={'American Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
+      <Shelf data={searchData(['AM'])} top={true} title={'American Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['AS','EU'])} top={false} title={'Eurasian Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['AF'])} top={false} title={'African Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['OC'])} top={false} title={'Oceanian Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />

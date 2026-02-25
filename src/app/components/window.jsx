@@ -74,7 +74,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
                 ? <a href={getMovieLink(data.watch)} target="_blank">▶&nbsp; Play</a>
                 : <span className={styles.inactive}>▶&nbsp; Not Available</span>
               }
-              <span><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</span>
+              <a href={data.trailer} target="_blank"><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</a>
               <span onClick={clickInfo}>⋯&nbsp; More info</span>
             </div>
             <div ref={descRef}>{getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}</div>
@@ -96,8 +96,12 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
           <Suggestions data={searchData(getNeighbors(data.id))} setWindow={changeShow} setID={changeKey} windowRef={windowRef} suggRef={suggRef} descRef={descRef} />
           {/* <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} /> */}
           <h4>More Info</h4>
-          <div><span><i><b>Full description</b>:</i></span>&nbsp; {textParser(data.info)}</div>
-          <div><span><i><b>Genre tags</b>:</i></span>&nbsp; <p>{data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p></div>
+          <div>
+            <span><i><b>Full description</b>:</i></span>&nbsp; {textParser(data.info)}
+          </div>
+          <div style={{marginTop:data.info.includes('\n')?'':'0.5vw'}}>
+            <span><i><b>Genre tags</b>:</i></span>&nbsp; <p>{data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p>
+          </div>
           <div ref={infoRef}></div>
         </div>
         <button className={styles.closeWindow} onClick={() => changeShow(false)}>✕</button>

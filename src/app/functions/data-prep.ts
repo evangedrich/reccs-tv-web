@@ -1,6 +1,7 @@
 import { movies } from '@/app/lib/movies';
+import { idToSubregion } from '@/app/functions/text-prep';
 
-interface flatMovieType {
+export interface flatMovieType {
   id: string,
   title: { original: string, transliteration?: string, translation?: string, } | string,
   year: string,
@@ -8,7 +9,7 @@ interface flatMovieType {
   genre: string[],
   group: { people?: string, language?: string, country?: string, location?: string, },
   info: string,
-  watch: string,
+  watch: string | string[],
   trailer: string,
   color?: string,
   location?: { x: number, y: number, name?: string, },
@@ -47,7 +48,7 @@ export const searchData = (query: string[]) => {
 };
 
 // Fisher-Yates shuffles elements in an array (AI prepped this one for me)
-export const shuffle = (arr) => {
+export const shuffle = (arr: any) => {
   let currIndex = arr.length, randIndex;
   for (let i=0; i<currIndex; i++) {
     randIndex = Math.floor(Math.random() * currIndex);
@@ -57,13 +58,13 @@ export const shuffle = (arr) => {
 };
 
 // returns correct primary title
-export const getMainTitle = (title) => {
+export const getMainTitle = (title: string | { original: string, transliteration?: string, translation?: string, }) => {
   return (typeof title === 'string') ? title : title.original;
 };
-export const getMovieLink = (link) => {
+export const getMovieLink = (link: string | string[]) => {
   return (Array.isArray(link)) ? link[0] : link;
 };
-export const getPlatform = (url) => {
+export const getPlatform = (url: string) => {
   let name = "[Unknown]";
   if (url.includes("kanopy")) { name="Kanopy"; }
   else if (url.includes("netflix")) { name="Netflix"; }
@@ -82,4 +83,19 @@ export const getPlatform = (url) => {
   else if (url.includes("criterion")) { name="The Criterion Channel"; }
   else if (url.includes("fandango")) { name="Fandango at Home"; }
   return name;
+};
+
+export const broadSearch = (query: string) => {
+  const movieDb = searchData(['']);
+  query = query.toLowerCase();
+  let findings = movieDb;
+  const checkRegion = (id: string) => { const subrName = idToSubregion(id.slice(0,4)).toLowerCase(); return subrName.includes(query); };
+  const checkTitle = (title: any) => { return (typeof title === 'string') ? title.toLowerCase().includes(query) : Object.values(title).some(value => typeof value === 'string' && value.toLowerCase().includes(query)); }
+  const checkGenre = (arr: string[]) => { let isMatch=false; arr.forEach(genre => { if (genre.toLowerCase().includes(query)) { isMatch=true; } }); return isMatch; };
+  const checkGroup = (grp: any) => { return Object.values(grp).some(value => typeof value === 'string' && value.toLowerCase().includes(query)); };
+  const checkStream = (links: string | string[]) => { let isMatch=false; if (Array.isArray(links)) { links.forEach(link => { if (getPlatform(link).toLowerCase().includes(query)) { isMatch=true; } }); } else { isMatch=getPlatform(links).toLowerCase().includes(query); } return isMatch; };
+  findings = movieDb.filter(movie => (
+    checkRegion(movie.id) || checkTitle(movie.title) || checkGenre(movie.genre) || checkGroup(movie.group) || checkStream(movie.watch)
+  ));
+  return findings;
 };

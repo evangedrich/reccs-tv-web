@@ -30,8 +30,9 @@
   font-size: 2vw;
   font-weight: 700;
 }
-.text p {
+.text p:first-of-type {
   font-weight: 300;
+  letter-spacing: -1.5%;
 }
 .mapContainer {
   position: relative;
@@ -49,16 +50,16 @@
   top: 0;
   left: 0;
   background-color: var(--color-mid);
-  width: 2.2rem;
-  height: 2.2rem;
-  margin: 1rem;
-  border: 1px solid var(--color-mid);
-  border-radius: 0.5rem;
+  width: 3vw;
+  height: 3vw;
+  margin: 1.25vw;
+  border: 0.1vw solid var(--color-mid);
+  border-radius: 0.75vw;
   box-sizing:border-box;
   font-family: system-ui, sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.5vw;
   font-weight: 300;
-  line-height: calc(2.2rem - 2px);
+  line-height: calc(3vw - 0.2vw);
   text-align: center;
   cursor: pointer;
   transition: transform 100ms linear;
@@ -66,10 +67,11 @@
 .fullView:hover {
   background-color: var(--color-mid-2);
   transform: scale(1.08);
+  border: 0.1vw solid var(--color-mid-3);
 }
 .fullView:active {
   background-color: var(--color-mid-3);
-  transform: scale(0.95);
+  transform: scale(1.04);
 }
 .mapContainer object {
   width: 100%;
@@ -91,7 +93,7 @@
   color: whitesmoke;
   letter-spacing: -0.04em;
   -webkit-text-stroke-width: 0.07vw; /* Outline width */
-  -webkit-text-stroke-color: #181818; /* Outline color */
+  -webkit-text-stroke-color: rgba(18,18,18,0.9); /* Outline color */
   /* text-shadow: 0.05vw 0.05vw 0 #222222, -0.05vw 0.05vw 0 #222222, 0.05vw -0.05vw 0 #222222, -0.05vw -0.05vw 0 #222222; */
   transition: opacity 200ms ease-in-out, transform 100ms ease-in-out;
 }

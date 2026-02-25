@@ -1,27 +1,27 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
-import { FastAverageColor } from 'fast-average-color';
+import React, { useState, useEffect, useRef, useMemo, Dispatch, SetStateAction } from 'react';
+// import { FastAverageColor } from 'fast-average-color';
 import { notoSans } from '@/app/ui/fonts';
 import styles from '@/app/ui/media.module.css';
 import Image from 'next/image';
-import { getMainTitle, shuffle } from '@/app/functions/data-prep';
+import { flatMovieType, getMainTitle, shuffle } from '@/app/functions/data-prep';
 
-function Poster({ movie, top, setWindow, setID }) {
-  const [bgColor, setBgColor] = useState('blue');
-  useEffect(() => {
-    const fac = new FastAverageColor();
-    fac.getColorAsync(`/posters/${movie.id}.jpg`, { algorithm: 'sqrt' })
-      .then(color => {
-        setBgColor(color.rgba);
-      })
-      .catch(e => console.error("Color extraction failed:", e));
-    return () => fac.destroy();
-  }, [`/posters/${movie.id}.jpg`]);
-  const giveColor = () => { console.log(bgColor); };
-  const twColor = 'from-['+movie.color+']';
+function Poster({ movie, top, setWindow, setID }: { movie: flatMovieType, top: boolean, setWindow: Dispatch<SetStateAction<boolean>>, setID: Dispatch<SetStateAction<string>>, }) {
+  // const [bgColor, setBgColor] = useState('blue');
+  // useEffect(() => {
+  //   const fac = new FastAverageColor();
+  //   fac.getColorAsync(`/posters/${movie.id}.jpg`, { algorithm: 'sqrt' })
+  //     .then(color => {
+  //       setBgColor(color.rgba);
+  //     })
+  //     .catch(e => console.error("Color extraction failed:", e));
+  //   return () => fac.destroy();
+  // }, [`/posters/${movie.id}.jpg`]);
+  // const giveColor = () => { console.log(bgColor); };
+  // const twColor = 'from-['+movie.color+']';
   return (
-    <li onClick={() => { giveColor(); setWindow(true); setID(movie.id); }} className={notoSans.className}>
+    <li onClick={() => { /*giveColor();*/ setWindow(true); setID(movie.id); }} className={notoSans.className}>
       <div className={`relative w-full h-full`} style={{backgroundColor:movie.color??'gray',}}>
         <Image
           src={`/posters/${movie.id}.jpg`}
@@ -30,7 +30,9 @@ function Poster({ movie, top, setWindow, setID }) {
           height={400}
           priority={top}
         />
-        <div className={`absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t to-transparent`} style={{ '--tw-gradient-from': movie.color, '--tw-gradient-to': 'transparent' }}></div>
+        <div className={`absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t to-transparent`}
+          style={{ '--tw-gradient-from': movie.color, '--tw-gradient-to': 'transparent' } as React.CSSProperties}
+        ></div>
         <div className={`absolute bottom-0 left-0 w-full text-center p-2`}>
           <h3 className={`text-[1.5vw] leading-[1.1em] mb-1`}>{getMainTitle(movie.title)}</h3>
           <p className={`text-[0.9vw] mb-1`}>{movie.year}</p>
@@ -40,11 +42,11 @@ function Poster({ movie, top, setWindow, setID }) {
   )
 }
 
-export default function Shelf({ data, top, title, shuffled, setWindow, setID, }) {
+export default function Shelf({ data, top, title, shuffled, setWindow, setID, }: { data: flatMovieType[], top: boolean, title: string, shuffled: boolean, setWindow: Dispatch<SetStateAction<boolean>>, setID: Dispatch<SetStateAction<string>>, }) {
   const [hasMounted, setHasMounted] = useState(false);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
-  const shelfRef = useRef(null);
+  const shelfRef = useRef<HTMLUListElement>(null);
   let isShort = data.length <= 5;
 
   const shuffledData = useMemo(() => {
@@ -57,18 +59,18 @@ export default function Shelf({ data, top, title, shuffled, setWindow, setID, })
   if (!hasMounted) return null;
   const displayData = shuffled ? shuffledData : data;
 
-  const handleScroll = (e) => {
-    const { scrollLeft, clientWidth, scrollWidth } = e.target;
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const { scrollLeft, clientWidth, scrollWidth } = e.currentTarget;
     const endMargin = window.innerWidth*0.035;
     const isAtEnd = Math.abs(scrollWidth - clientWidth - scrollLeft) <= 1 + endMargin;
     const isAtStart = scrollLeft <= 1 + endMargin;
     setIsAtEnd(isAtEnd);
     setIsAtStart(isAtStart);
   };
-  const handleClick = (direction) => {
+  const handleClick = (direction: string) => {
     if (shelfRef.current) {
       const { current } = shelfRef;
-      const liWidth = current.querySelector('li').offsetWidth;
+      const liWidth = current.querySelector('li')?.offsetWidth ?? 0;
       const liVisCount = Math.floor(window.innerWidth/liWidth)-1;
       const liTotWidth = liWidth+window.innerWidth*0.025;
       const scrollAmount = Math.floor(liTotWidth * liVisCount);
@@ -82,7 +84,7 @@ export default function Shelf({ data, top, title, shuffled, setWindow, setID, })
     <div className={styles.shelf}>
       <h2>{title}</h2>
       <ul onScroll={(e) => handleScroll(e)} ref={shelfRef}>
-        {displayData.map(movie => (
+        {displayData.map((movie: flatMovieType) => (
           <Poster movie={movie} top={top} setWindow={setWindow} setID={setID} key={`card${movie.id}`} />
         ))}
       </ul>

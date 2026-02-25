@@ -3,7 +3,6 @@ import { getPlatform } from '@/app/functions/data-prep';
 
 export default function StreamingServices ({ data }) {
   const links = Array.isArray(data) ? data : [data];
-  console.log(links);
   return (
     <div className={styles.stream}>
       <ul>
