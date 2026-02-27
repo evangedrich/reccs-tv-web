@@ -15,7 +15,7 @@ export default function Home() {
     filmList.push(film.title);
   }); console.log(filmList);*/
   return (
-    <div>
+    <div className="mt-[2vw]">
       <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['AM'])} top={true} title={'American Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />
       <Shelf data={searchData(['AS','EU'])} top={false} title={'Eurasian Cinema'} shuffled={true} setWindow={setShowWindow} setID={setClickedKey} />

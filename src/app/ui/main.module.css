@@ -1,4 +1,5 @@
 .nav {
+  position: relative;
   width: 100%;
   height: auto;
   display: flex;
@@ -35,6 +36,7 @@
 
 .title {
   width: fit-content;
+  cursor: default;
 }
 .title span {
   display: inline-block;
@@ -46,9 +48,9 @@
 .title span:nth-child(even) {
   transform: translateY(0.08em);
 }
-.title:hover span:nth-child(odd) {
+/* .title:hover span:nth-child(odd) {
   transform: translateY(0.08em);
 }
 .title:hover span:nth-child(even) {
   transform: translateY(-0.08em);
-}
+} */

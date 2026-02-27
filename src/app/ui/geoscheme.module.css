@@ -34,7 +34,7 @@
   font-weight: 300;
   letter-spacing: -1.5%;
 }
-.mapContainer {
+.mapContainer, .fakeMapContainer {
   position: relative;
   width: 93vw;
   margin-left: 1vw;

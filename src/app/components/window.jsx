@@ -140,6 +140,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
             height="100%"
             rel="0"
             onPlay={handleVideoStart}
+            onEnded={closeTrailer}
             playing={showFs}
             inert={showFs?null:""}
             />
@@ -147,10 +148,10 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
           <div className="absolute w-full h-[8vh] bg-black bottom-0 left-0 opacity-[50%]"></div> */}
           </div>
           <div className={`absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center`}
-            style={{opacity:showReccsTitle?'1':'0',transform:hasPlayed?'scale(1.08)':'scale(1)',transition:'opacity 700ms ease, transform 3s linear'}}
+            style={{opacity:showReccsTitle?'1':'0',transform:hasPlayed?'scale(0.86)':'scale(0.78)',transition:'opacity 700ms ease, transform 4s linear'}}
           >
-            <div className={`${mainStyles.title} ${fahkwang.className} text-[5vw]`}><span>R</span><span>E</span><span>C</span><span>C</span><span>S</span></div>
-            <div className={`${openSans.className} font-light text-[2.25vw] mt-[-1.5vw] tracking-widest`}>FILM</div>
+            <div className={`${openSans.className} font-light text-[2.25vw] leading-none tracking-widest`}>FILM</div>
+            <div className={`${mainStyles.title} ${fahkwang.className} text-[5vw] mt-[-0.8vw]`}><span>R</span><span>E</span><span>C</span><span>C</span><span>S</span></div>
           </div>
         </div>
         <button className={`${styles.closeWindow} z-30`} onClick={closeTrailer}>&larr;</button>
