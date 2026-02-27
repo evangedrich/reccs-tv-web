@@ -12,7 +12,8 @@
     "html-react-parser": "^5.2.17",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-player": "^3.4.0"
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",

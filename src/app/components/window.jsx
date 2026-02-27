@@ -1,6 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import ReactPlayer from 'react-player';
 import styles from '@/app/ui/media.module.css';
-import { notoSans, notoEmoji } from '@/app/ui/fonts';
+import mainStyles from '@/app/ui/main.module.css';
+import { fahkwang, openSans, notoSans, notoEmoji } from '@/app/ui/fonts';
 import { searchData, getMainTitle, getMovieLink } from '@/app/functions/data-prep';
 import { textParser, runtimeToString, idToSubregion, getNeighbors } from '@/app/functions/text-prep';
 import Image from 'next/image';
@@ -22,39 +24,58 @@ const dummyMovie = {
 };
 
 export default function Window({ show, changeShow, dataKey, changeKey, }) {
+  const [showFs, setShowFs] = useState(false);
+  const [trailerUrl, setTrailerUrl] = useState(null);
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const [showReccsTitle, setShowReccsTitle] = useState(false);
   const infoRef = useRef(null);
   const windowRef = useRef(null);
   const descRef = useRef(null);
   const suggRef = useRef(null);
-  useEffect(() => {  // prevent background scroll
+  useEffect(() => { // prevent background scroll
     if (show) { document.body.style.overflow = 'hidden'; }
     else { document.body.style.overflow = 'unset'; }
     return () => { document.body.style.overflow = 'unset'; };
   }, [show]);
+  useEffect(() => { // sense esc key press
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        setShowFs((prevShowFs) => {
+          if (prevShowFs) return false;
+          return prevShowFs;
+        });
+      }
+    }; window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
   const allMovies = searchData(['']);
   const data = dataKey==='' ? dummyMovie : allMovies.find(movie => movie.id===dataKey);
   const clickInfo = () => {
     infoRef.current?.scrollIntoView({ behavior: 'smooth' });
   }
+  const playTrailer = (url) => {
+    setTrailerUrl(url);
+    setShowFs(true);
+    setTimeout(() => { setShowReccsTitle(true); }, 500);
+  };
+  const closeTrailer = () => {
+    setShowFs(false);
+    setHasPlayed(false);
+  };
+  const handleVideoStart = () => {
+    if (!hasPlayed) {
+      console.log('Video started playing for the first time!');
+      setHasPlayed(true);
+      setTimeout(() => { setShowReccsTitle(false); }, 2500);
+    }
+  };
   return (
     <div className={`${styles.windowBg} ${show?styles.active:''} ${notoSans.className}`} ref={windowRef}>
       <div className="absolute top-0 right-0 bottom-0 left-0" onClick={() => changeShow(false)}></div>
       <div className={styles.window}>
         <div className={styles.wrapper}>
-          {/* <div>
-            <div>
-              <span className={notoEmoji.className}>▶︎</span>
-              <span>Watch</span>
-            </div>
-            <div>
-              <span className={notoEmoji.className}>🎦</span>
-              <span>Trailer</span>
-            </div>
-            <div onClick={clickInfo}>
-              <span className={notoEmoji.className}>ℹ︎</span>
-              <span>More<br/>Info</span>
-            </div>
-          </div> */}
           <div>
             <h1>{getMainTitle(data.title)}</h1>
             <h2>
@@ -74,7 +95,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
                 ? <a href={getMovieLink(data.watch)} target="_blank">▶&nbsp; Play</a>
                 : <span className={styles.inactive}>▶&nbsp; Not Available</span>
               }
-              <a href={data.trailer} target="_blank"><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</a>
+              <button onClick={() => playTrailer(data.trailer)}><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</button>
               <span onClick={clickInfo}>⋯&nbsp; More info</span>
             </div>
             <div ref={descRef}>{getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}</div>
@@ -106,6 +127,34 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
         </div>
         <button className={styles.closeWindow} onClick={() => changeShow(false)}>✕</button>
       </div>
+      {showFs?<div className={`fixed top-0 right-0 bottom-0 left-0 z-20 ${styles.fsBg} ${showFs?'block':'hidden'}`}>
+        <div className={`relative w-full h-full m-auto flex items-center justify-center bg-black`} style={{opacity:hasPlayed?'1':'0'}}>
+          {/* <iframe width="560" height="315" className="w-[90%] h-[90%]" style={{opacity:}}
+            src={`https://www.youtube.com/embed/MsUAluISvgE?autoplay=${showFs?"1":"0"}&rel=0&controls=0`} title="YouTube video player" frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+          ></iframe> */}
+          <div className={`relative w-[90%] h-[90%]`} style={{opacity:hasPlayed?'1':'0',transition:'opacity 1s linear 3.5s',pointerEvents:'none',}}>
+            <ReactPlayer
+            src={trailerUrl}
+            width="100%"
+            height="100%"
+            rel="0"
+            onPlay={handleVideoStart}
+            playing={showFs}
+            inert={showFs?null:""}
+            />
+          {/* <div className="absolute w-full h-[8vh] bg-black top-0 left-0 opacity-[50%]"></div>
+          <div className="absolute w-full h-[8vh] bg-black bottom-0 left-0 opacity-[50%]"></div> */}
+          </div>
+          <div className={`absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center`}
+            style={{opacity:showReccsTitle?'1':'0',transform:hasPlayed?'scale(1.08)':'scale(1)',transition:'opacity 700ms ease, transform 3s linear'}}
+          >
+            <div className={`${mainStyles.title} ${fahkwang.className} text-[5vw]`}><span>R</span><span>E</span><span>C</span><span>C</span><span>S</span></div>
+            <div className={`${openSans.className} font-light text-[2.25vw] mt-[-1.5vw] tracking-widest`}>FILM</div>
+          </div>
+        </div>
+        <button className={`${styles.closeWindow} z-30`} onClick={closeTrailer}>&larr;</button>
+      </div>:<></>}
     </div>
   )
 }

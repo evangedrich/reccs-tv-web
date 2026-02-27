@@ -257,7 +257,7 @@ export const subregions: subregionType[] = [
     id: "OCMD",
     color: "#fb9a97",
     neighbors: ['ASSE','AFEA','OCPL'],
-    description: ``,
+    description: `A combination of Austronesian (originating in Maritime Southeast Asia) and later Bantu (via Southeast Africa) influences converge to constitute the Malagasy language and culture predominant across the island.`,
     text: { x: 61, y: 68, el: <>Madagascar</>, },
     zoom: { x: 70.5, y: 76, amount: 5, },
   },

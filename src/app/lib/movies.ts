@@ -123,7 +123,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Inuit", language: "Inuktitut", location: "Nunavut, CA", },
         info: `Igloolik is a community of 1,200 people located on a small island in the north Baffin region of the Canadian Arctic with archeological evidence of 4,000 years of continuous habitation. Throughout these millennia, with no written language, untold numbers of nomadic Inuit renewed their culture and traditional knowledge for every generation entirely through storytelling.\n*Atanarjuat* is part of this continuous stream of oral history carried forward into the new millennium through a marriage of Inuit storytelling skills and new technology.\nDir/Prod **ZACHARIAS KUNUK** is the renowned Inuk filmmaker responsible for an extensive Inuktitut-language media presence, with directing, writing, and producing credits on a great variety of North American indigenous cinema, including over 30 films, funding for the IsumaTV multimedia platform, and much more.`,
         watch: 'https://tv.apple.com/us/movie/umc.cmc.1co9m5b61l1hkihyksjodghe2',
-        trailer: 'https://youtu.be/O7vbzmLueAY',
+        trailer: 'https://youtu.be/Wqxjorhxx0Y',
         color: '#a09a96',
         location: { x: 32.66, y: 5.51, name: 'Igloolik', }
       },
@@ -404,7 +404,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Ngalop", language: "Dzongkha", country: "Bhutan", },
         info: `*Lunana* follows Ugyen, a discontented, aspiring singer living in Thimphu who dreams of moving to Australia to become a rock star. He is sent to finish his mandatory teaching service in Lunana, a village of 56 people, 4,800 meters above sea level with no electricity or internet.\nFilmed on location in the Himalayas, the film showcases stunning, panoramic mountain scenery, and includes acting performances from many of the residents of the actual village of Lunana.`,
         watch: ['https://tubitv.com/movies/100018429/lunana-a-yak-in-the-classroom','https://www.amazon.com/gp/video/detail/amzn1.dv.gti.2617c909-646d-4c96-aa0d-ca44f34ed961'],
-        trailer: '',
+        trailer: 'https://youtu.be/1W8m1IjLJB8',
         color: '#9e603a',
         location: { x: 73.8, y: 35.45, name: 'Gasa District', }
       },
@@ -421,7 +421,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Telugu", language: "Telugu", location: "Telangana, India", },
         info: `An epic tale of a fearless Gōṇḍī revolutionary leader on a dangerous mission, who confronts a steely Indian Imperial Police officer serving the British Raj. *RRR* is a historical fiction film featuring characters inspired by two real-life Indian freedom fighters.\nDir/Scr **S. S. RAJAMOULI**, whose Telugu-language films rank among the most expensive and the highest grossing in India, delivers just about every possible mode of cinematic entertainment in this expansive period action drama.`,
         watch: 'https://www.netflix.com/title/81476453',
-        trailer: 'https://youtu.be/NgBoMJy386M',
+        trailer: 'https://youtu.be/NgBoMJy386M?t=4',
         color: '#627147',
         location: { x: 70.5, y: 41.3, name: 'Adilabad Forest', }
       },
@@ -467,7 +467,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Kyrgyz", language: "Kyrgyz", country: "Kyrgyzstan", },
         info: `A young boy in a rural village discovers he is adopted. The film explores his coming-of-age journey as he navigates childhood mischief, his first crush, and the complex emotions surrounding his true parentage.\nDir/Scr **AKTAN ABDYKALYKOV** is a Kyrgyz filmmaker. The story of *Beshkempir* is based on his own life, having learned that his mother and father were not his biological parents at age 13.`,
         watch: 'https://youtu.be/aLRTEUqa-q4',
-        trailer: 'https://www.facebook.com/100052319903979/videos/beshkempir-1998/344696701371229/',
+        trailer: 'https://youtube.com/shorts/AuZRELbXZh8',
         color: '#db8b40',
         location: { x: 67.9, y: 25.25, name: 'Bar-Bulak Village', }
       },
@@ -479,7 +479,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Kazakh", language: "Kazakh", country: "Kazakhstan/Pakistan/India", },
         info: `In trying to earn a living for her small family—an old grandmother, a withdrawn little brother, and a two-year-old daughter—Madina is ready to go against her moral principles. Her feelings are frozen by a cold winter inside her that seems to never end, until one day her brother makes a shocking revelation. The knowledge of the abuse to which he was subjected as a child changes everything for Madina and breaks the ice that covers her soul. The story is based on the real experiences of lead actress Madina Akylbekov.\nDir/Scr/Prod **AIZHAN KASSYMBEK** is a Kazakh filmmaker whose goal is to empower women in film, such as with the all-women crew of her first film *Fire* (2021).`,
         watch: '',
-        trailer: 'https://mubi.com/en/films/madina/trailer',
+        trailer: 'https://youtu.be/AQSyLUDVihY',
         color: '#49505c',
         location: { x: 62.25, y: 24.3, name: 'Aktau City', }
       },
