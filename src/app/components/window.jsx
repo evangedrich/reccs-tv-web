@@ -28,7 +28,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
   const [trailerUrl, setTrailerUrl] = useState(null);
   const [hasPlayed, setHasPlayed] = useState(false);
   const [showReccsTitle, setShowReccsTitle] = useState(false);
-  const infoRef = useRef(null);
+  const [showInfo, setShowInfo] = useState(false);
   const windowRef = useRef(null);
   const descRef = useRef(null);
   const suggRef = useRef(null);
@@ -52,9 +52,6 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
   }, []);
   const allMovies = searchData(['']);
   const data = dataKey==='' ? dummyMovie : allMovies.find(movie => movie.id===dataKey);
-  const clickInfo = () => {
-    infoRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }
   const playTrailer = (url) => {
     setTrailerUrl(url);
     setShowFs(true);
@@ -70,12 +67,15 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
       setTimeout(() => { setShowReccsTitle(false); }, 2750);
     }
   };
+  const toggleInfo = () => {
+    setShowInfo(!showInfo);
+  };
   return (
     <div className={`${styles.windowBg} ${show?styles.active:''} ${notoSans.className}`} ref={windowRef}>
-      <div className="absolute top-0 right-0 bottom-0 left-0" onClick={() => changeShow(false)}></div>
+      <div className="fixed top-0 right-0 bottom-0 left-0" onClick={() => changeShow(false)}></div>
       <div className={styles.window}>
         <div className={styles.wrapper}>
-          <div>
+          <div style={{maxHeight:showInfo?'fit-content':'32vw',}}>
             <h1>{getMainTitle(data.title)}</h1>
             <h2>
               {(typeof data.title === 'object' && 'transliteration' in data.title) ? <>{data.title.transliteration}</> : <></>}
@@ -95,9 +95,12 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
                 : <span className={styles.inactive}>▶&nbsp; Not Available</span>
               }
               <button onClick={() => playTrailer(data.trailer)}><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</button>
-              <span onClick={clickInfo}>⋯&nbsp; More info</span>
+              <span onClick={toggleInfo}>⋯&nbsp; {showInfo?'Less':'More'} info</span>
             </div>
-            <div ref={descRef}>{getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}</div>
+            <div ref={descRef} style={{overflow:showInfo?'visible':'hidden',}}>
+              {getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}
+              {showInfo?<p><i><span style={{fontWeight:'500'}}>Genre tags</span>:</i>&nbsp; {data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p>:<></>}
+            </div>
           </div>
           <div>
             <Image
@@ -115,16 +118,8 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
           <h4>Neighboring Subregions</h4>
           <Suggestions data={searchData(getNeighbors(data.id))} setWindow={changeShow} setID={changeKey} windowRef={windowRef} suggRef={suggRef} descRef={descRef} />
           {/* <Shelf data={searchData([''])} top={true} title={'All Movies'} shuffled={true} /> */}
-          <h4>More Info</h4>
-          <div>
-            <span><i><b>Full description</b>:</i></span>&nbsp; {textParser(data.info)}
-          </div>
-          <div style={{marginTop:data.info.includes('\n')?'':'0.5vw'}}>
-            <span><i><b>Genre tags</b>:</i></span>&nbsp; <p>{data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p>
-          </div>
-          <div ref={infoRef}></div>
         </div>
-        <button className={styles.closeWindow} onClick={() => changeShow(false)}>✕</button>
+        <button className={styles.closeWindow} onClick={() => { changeShow(false); setShowInfo(false); }}>✕</button>
       </div>
       {showFs?<div className={`fixed top-0 right-0 bottom-0 left-0 z-20 ${styles.fsBg} ${showFs?'block':'hidden'}`}>
         <div className={`relative w-full h-full m-auto flex items-center justify-center bg-black`} style={{opacity:hasPlayed?'1':'0'}}>

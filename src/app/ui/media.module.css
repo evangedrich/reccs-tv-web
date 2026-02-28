@@ -224,8 +224,8 @@
   line-height: 1.25em;
   font-weight: 300;
 }
-.window .wrapper p > b, .window .wrapper2 p > b, .window .wrapper2 span b {
-  font-weight: 600;
+.window .wrapper p > b, .window .wrapper2 p > b, .window .wrapper span b {
+  font-weight: 500;
 }
 .window .wrapper {
   display: flex;
@@ -287,8 +287,8 @@
 .window .wrapper > div:nth-of-type(1) > div:nth-of-type(2) {
   position: relative;
   flex-shrink: 1;
-  overflow: scroll;
-  mask-image: linear-gradient(to bottom, var(--color-back) calc(100% - 0.5em), transparent 100%);
+  overflow: visible;
+  mask-image: linear-gradient(to bottom, var(--color-back) calc(100% - 0.7vw), transparent 100%);
 }
 .window .wrapper > div:nth-of-type(2) {
   flex-shrink: 0;
@@ -345,7 +345,7 @@
 .suggested {
   position: relative;
   width: 100%;
-  margin-bottom: 2.5vw;
+  margin-bottom: 1.5vw;
 }
 .suggested ul {
   width: 100%;

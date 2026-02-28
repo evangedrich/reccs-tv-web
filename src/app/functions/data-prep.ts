@@ -7,6 +7,7 @@ export interface flatMovieType {
   year: string,
   runtime: number,
   genre: string[],
+  tags: string[],
   group: { people?: string, language?: string, country?: string, location?: string, },
   info: string,
   watch: string | string[],
@@ -34,6 +35,7 @@ export const searchData = (query: string[]) => {
           year: entry.year,
           runtime: entry.runtime,
           genre: entry.genre,
+          tags: entry.tags,
           group: entry.group,
           info: entry.info,
           watch: entry.watch,
@@ -93,10 +95,11 @@ export const broadSearch = (query: string) => {
   const checkRegion = (id: string) => { const subrName = idToSubregion(id.slice(0,4)).toLowerCase(); return subrName.includes(query); };
   const checkTitle = (title: any) => { return (typeof title === 'string') ? title.toLowerCase().includes(query) : Object.values(title).some(value => typeof value === 'string' && value.toLowerCase().includes(query)); }
   const checkGenre = (arr: string[]) => { let isMatch=false; arr.forEach(genre => { if (genre.toLowerCase().includes(query)) { isMatch=true; } }); return isMatch; };
+  const checkTags = (arr: string[]) => { let isMatch=false; arr.forEach(tag => { if (tag.toLowerCase().includes(query)) { isMatch=true; } }); return isMatch; };
   const checkGroup = (grp: any) => { return Object.values(grp).some(value => typeof value === 'string' && value.toLowerCase().includes(query)); };
   const checkStream = (links: string | string[]) => { let isMatch=false; if (Array.isArray(links)) { links.forEach(link => { if (getPlatform(link).toLowerCase().includes(query)) { isMatch=true; } }); } else { isMatch=getPlatform(links).toLowerCase().includes(query); } return isMatch; };
   findings = movieDb.filter(movie => (
-    checkRegion(movie.id) || checkTitle(movie.title) || checkGenre(movie.genre) || checkGroup(movie.group) || checkStream(movie.watch)
+    checkRegion(movie.id) || checkTitle(movie.title) || checkGenre(movie.genre) || checkTags(movie.tags) || checkGroup(movie.group) || checkStream(movie.watch)
   ));
   return findings;
 };
