@@ -20,6 +20,15 @@
   border-radius: 1.5vw;
   box-shadow: inset 0 0 0 0.1vw var(--color-mid);
 }
+.textContainer > div {
+  display: flex;
+  flex-direction: column;
+  height: 92%;
+}
+.textContainer > div > h2, .textContainer > div > p {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
 .text {
   position: absolute;
   width: 34vw;
@@ -100,6 +109,9 @@
 .mapLabels button:hover {
   opacity: 1;
   transform: scale(1.15);
+}
+.mapLabels button:active {
+  transform: scale(1.075);
 }
 .pin {
   cursor: pointer;

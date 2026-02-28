@@ -12,10 +12,10 @@ export default function Nav() {
       {/*<Link href='/' style={{display:'inline-block',}}>
         <h1 className={`${styles.title} ${fahkwang.className} text-4xl m-5`}><span>R</span><span>E</span><span>C</span><span>C</span><span>S</span></h1>
       </Link>*/}
-      <div className={`absolute top-0 left-0 flex flex-col items-center pt-[0.9vw] pl-[2vw]`}>
+      <Link href='/' className={`absolute top-0 left-0 flex flex-col items-center mt-[0.9vw] ml-[1.4vw] ${styles.link}`}>
         <h2 className={`${openSans.className} text-[1vw] leading-[1.15vw] tracking-widest`}>FILM</h2>
         <h1 className={`${styles.title} ${fahkwang.className} text-[1.85vw] leading-none`}><span>R</span><span>E</span><span>C</span><span>C</span><span>S</span></h1>
-      </div>
+      </Link>
       <div className={styles.navButtons}>
         <Link href='/'  className={`${styles.navLink} ${pathname==='/'?styles.active:''}`}>Home</Link>
         <Link href='/geoscheme' className={`${styles.navLink} ${pathname.includes('geoscheme')?styles.active:''}`}>Geoscheme</Link>

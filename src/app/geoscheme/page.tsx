@@ -54,6 +54,7 @@ export default function GeoschemePage() {
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
       if (thisColor && !allColors.includes(thisColor)) { allColors.push(thisColor); }
+      path.style.stroke = path.style.fill; path.style.strokeWidth = '0.25';
     });
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
@@ -72,7 +73,7 @@ export default function GeoschemePage() {
         setCurrSubr(name);
         setCurrSubrId(id);
         setTimeout(() => { setZoom(zoomAmount); }, 200);
-        setTimeout(() => { (irrelevantPaths as NodeListOf<SVGPathElement>).forEach(path => { path.style.opacity = '0.5'; }); setReady(true); }, 700);
+        setTimeout(() => { (irrelevantPaths as NodeListOf<SVGPathElement>).forEach(path => { path.style.opacity = '0.4'; path.style.stroke = 'transparent'; }); setReady(true); }, 700);
       }
     }
   };
@@ -81,6 +82,7 @@ export default function GeoschemePage() {
     document.querySelector(`object`)?.contentDocument?.querySelectorAll(`path`).forEach(path => { path.style.opacity = '1'; });
     setTimeout(() => { setZoom(1); }, 500);
     setTimeout(() => { setOrigin('0 0'); }, 1200);
+    setTimeout(() => { document.querySelector(`object`)?.contentDocument?.querySelectorAll(`path`).forEach(path => { path.style.stroke = path.style.fill; }); }, 1200);
   };
   const transformObj = { transform:`scale(${zoom})`, transformOrigin:origin, transition:'transform 500ms ease-in-out', };
   const getZoom = (id: string) => { return subregions.find(subr => id.slice(0,4)===subr.id)?.zoom.amount ?? 1; }

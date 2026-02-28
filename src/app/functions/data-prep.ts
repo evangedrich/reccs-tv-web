@@ -82,6 +82,7 @@ export const getPlatform = (url: string) => {
   else if (url.includes("hulu")) { name="Hulu"; }
   else if (url.includes("criterion")) { name="The Criterion Channel"; }
   else if (url.includes("fandango")) { name="Fandango at Home"; }
+  else if (url.includes("roku")) { name="Roku Channel"; }
   return name;
 };
 

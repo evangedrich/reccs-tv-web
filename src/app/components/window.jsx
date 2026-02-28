@@ -66,9 +66,8 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
   };
   const handleVideoStart = () => {
     if (!hasPlayed) {
-      console.log('Video started playing for the first time!');
       setHasPlayed(true);
-      setTimeout(() => { setShowReccsTitle(false); }, 2500);
+      setTimeout(() => { setShowReccsTitle(false); }, 2750);
     }
   };
   return (
@@ -133,7 +132,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
             src={`https://www.youtube.com/embed/MsUAluISvgE?autoplay=${showFs?"1":"0"}&rel=0&controls=0`} title="YouTube video player" frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
           ></iframe> */}
-          <div className={`relative w-[90%] h-[90%]`} style={{opacity:hasPlayed?'1':'0',transition:'opacity 1s linear 3.5s',pointerEvents:'none',}}>
+          <div className={`relative w-[90%] h-[90%]`} style={{opacity:hasPlayed?'1':'0',transition:'opacity 1s linear 3.75s',pointerEvents:'none',}}>
             <ReactPlayer
             src={trailerUrl}
             width="100%"
@@ -141,6 +140,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
             rel="0"
             onPlay={handleVideoStart}
             onEnded={closeTrailer}
+            playsinline={true}
             playing={showFs}
             inert={showFs?null:""}
             />

@@ -107,6 +107,8 @@
 .stack {
   position: relative;
   margin-top: 1vw;
+  flex-shrink: 1;
+  overflow-y: auto;
 }
 .stack ul {
   width: 100%;

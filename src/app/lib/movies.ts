@@ -30,18 +30,6 @@ const cultFeatFilms: movieType[] = [
         color: '#8d796e',
         location: { x: 48, y: 32, name: 'High Atlas Mountains', },
       },
-      {
-        title: { original: "ⴰⴽⵓⵏⴰⴽ ⵜⴷⴰⵍⴰⵜ ⵜⴰⵀⴰ ⵜⴰⵣⵓⴳⵀⴰⵉ", transliteration: "Akounak Tedalat Taha Tazoughai", translation: "Rain the Color of Blue with A Little Red In It", },
-        year: `2015`,
-        runtime: 75,
-        genre: ['Drama', 'Musical', 'Romance'],
-        group: { people: "Tuareg", language: "Tamasheq", country: "Niger/USA", },
-        info: `*Akounak* tells the story of a musician trying to make it against all odds, set against the backdrop of the Tuareg *tishoumaren* desert blues music scene. The protagonist, real life musician Mdou Moctar, must battle fierce competition from jealous musicians, overcome family conflicts, endure the trials of love, and overcome his biggest rival—himself.\nAn homage to Prince’s 1984 film *Purple Rain,* the story was written with and for a Tuareg audience by a Euro-American record label executive, drawing from the experiences of Mdou Moctar and his fellow musicians. Carried by stunning musical performances from Mdou, the film is equally a window into modern day Tuareg guitar in the city of Agadez, Niger as it is an experiment in new techniques of cross cultural collaboration, much like the genre of music being documented itself.\nThough the film's significant ethnographic and outside observer components disqualify it from being a proper cultural film, its efforts toward honest depictions, its involvement of local (though non-traditional) musicians, and especially its extensive use of the Tamasheq language are sufficient to qualify it as an alternate selection.`,
-        watch: 'https://archive.org/details/rain_the_color_of_blue',
-        trailer: 'https://youtu.be/QHgEuzv-zNA',
-        color: '#4f3457',
-        location: { x: 51.7, y: 43.5, name: 'Agadez, Niger', },
-      },
     ],
   },
   {
@@ -106,7 +94,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Bambara", language: "Bambara/Fula", country: "Mali", },
         info: `Set in the powerful Mali Empire of the 13th century, *Yeelen* follows the journey of Nianankoro, a young warrior who must battle the powerful Komo cult. Nianankoro's greatest enemy is his own father, a dangerous and corrupt wizard who uses his dark magic to try and destroy his son. Traveling over the arid Bambara, Fulani, and Dogan lands of ancient West Africa, Nianankoro eventually comes face to face with his father in a final fatal showdown.\nThis adaptation of an ancient oral legend from Mali is one the most acclaimed and widely seen African films ever made. Its extraordinary use of landscapes and light produces a unique and striking cinematic style.\nDir/Scr/Prod **SOULEYMANE CISSÉ** is regarded as among the first generation of West African filmmakers and has been called his region's greatest living filmmaker.`,
         watch: 'https://www.kanopy.com/en/product/yeelen',
-        trailer: 'https://youtu.be/GRlNG9lJ6rs',
+        trailer: 'https://youtu.be/GRlNG9lJ6rs?t=3',
         color: '#d4a555',
         location: { x: 47, y: 44.5, name: 'Dilli, Mali' },
       },
@@ -285,7 +273,7 @@ const cultFeatFilms: movieType[] = [
         year: '2022',
         runtime: 83,
         genre: ['Drama', 'Experimental', 'Mythic'],
-        group: { people: "Totobiegosode", language: "Ayoreo", country: "Paraguay", },
+        group: { people: "Ayoreo", language: "Ayoreo", country: "Paraguay", },
         info: `Eami's homeland is invaded by settlers. She embodies Asojá, the bird-god-woman, falling into a trance. She walks slowly and stunned through her beloved forest, preparing to leave it forever.\nDir/Scr/Prod **PAZ ENCINA** continues her work of remembrance with an intimate and sensorial approach to the recent history of Paraguay. Eami is a fragmented work, an immersive and hypnotic experience in which the mysticism of nature and its soundscape is interwoven with the perspective of a child.`,
         watch: '',
         trailer: 'https://youtu.be/j_WZGMo9BXo',
@@ -389,7 +377,7 @@ const cultFeatFilms: movieType[] = [
         year: '2024',
         runtime: 150,
         genre: ['Adventure', 'Drama', 'Spiritual'],
-        group: { people: "Nepali", language: "Nepali/Tibetan", country: "Nepal", },
+        group: { people: "Nepali", language: "Dölpo Tibetan", country: "Nepal", },
         info: `In the heart of the Nepalese Himalayas, the spirited Pema embraces a polyandrous marriage with Tashi and his two younger brothers. They initially lead a harmonious life, but when Tashi fails to return from a trading trip to Lhasa, the legitimacy of Pema’s unborn child is questioned by her community. Determined to prove her love and purity, she embarks on a quest to find Tashi.\nDir/Scr **MIN BAHADUR BHAM** sought with *Shambhala*, originally titled *Chiso Barsha (A Year of Cold)*, to make a female-driven travelogue for his second feature film.`,
         watch: '',
         trailer: 'https://youtu.be/IbT7lt8NZ6k',
@@ -397,16 +385,16 @@ const cultFeatFilms: movieType[] = [
         location: { x: 71.7, y: 34.6, name: 'Dolpo Region', }
       },
       {
-        title: { original: "ལུང་ནག་ན", transliteration: "Lung nag na", translation: "Lunana: A Yak in the Classroom", },
-        year: '2019',
-        runtime: 110,
-        genre: ['Drama', 'Comedy-Drama'],
-        group: { people: "Ngalop", language: "Dzongkha", country: "Bhutan", },
-        info: `*Lunana* follows Ugyen, a discontented, aspiring singer living in Thimphu who dreams of moving to Australia to become a rock star. He is sent to finish his mandatory teaching service in Lunana, a village of 56 people, 4,800 meters above sea level with no electricity or internet.\nFilmed on location in the Himalayas, the film showcases stunning, panoramic mountain scenery, and includes acting performances from many of the residents of the actual village of Lunana.`,
-        watch: ['https://tubitv.com/movies/100018429/lunana-a-yak-in-the-classroom','https://www.amazon.com/gp/video/detail/amzn1.dv.gti.2617c909-646d-4c96-aa0d-ca44f34ed961'],
-        trailer: 'https://youtu.be/1W8m1IjLJB8',
-        color: '#9e603a',
-        location: { x: 73.8, y: 35.45, name: 'Gasa District', }
+        title: { original: "ལྷགས་པ་དང་མཉམ་དུ་འགྲོ་བ།", transliteration: "Lhakpa-dang nyam-du dro-wa", translation: "Walking with the Wind", },
+        year: '2017',
+        runtime: 79,
+        genre: ['Drama', 'Coming-of-Age', 'Minimalist'],
+        group: { people: "Ladakhi", language: "Ladakhi", location: "Ladakh, India", },
+        info: `10-year-old Tsering lives in the Himalayas. One day he accidentally breaks his friend’s school chair. When he decides to bring the chair back to his village, the seven kilometres long journey back home in mountainous landscape on a donkey, becomes even more arduous than usual.\nDuring these four days of philosophical journey, the boy explores the social and political realities of adulthood, depicted in a metaphor for the awakening journey, the quest for inner truth and absolute reality.`,
+        watch: '',
+        trailer: 'https://youtu.be/Cl3-aUW_p54',
+        color: '#717862',
+        location: { x: 69.7, y: 31, name: 'Ladakh', }
       },
     ],
   },
@@ -467,7 +455,7 @@ const cultFeatFilms: movieType[] = [
         group: { people: "Kyrgyz", language: "Kyrgyz", country: "Kyrgyzstan", },
         info: `A young boy in a rural village discovers he is adopted. The film explores his coming-of-age journey as he navigates childhood mischief, his first crush, and the complex emotions surrounding his true parentage.\nDir/Scr **AKTAN ABDYKALYKOV** is a Kyrgyz filmmaker. The story of *Beshkempir* is based on his own life, having learned that his mother and father were not his biological parents at age 13.`,
         watch: 'https://youtu.be/aLRTEUqa-q4',
-        trailer: 'https://youtube.com/shorts/AuZRELbXZh8',
+        trailer: 'https://youtu.be/C_VoYtZ4hnA',
         color: '#db8b40',
         location: { x: 67.9, y: 25.25, name: 'Bar-Bulak Village', }
       },
@@ -549,7 +537,7 @@ const cultFeatFilms: movieType[] = [
         watch: ['https://youtu.be/2AMmHrFdyBw','https://www.amazon.com/gp/video/detail/B0F9LNDH49'],
         trailer: 'https://youtu.be/tH_MY8FJuYo',
         color: '#5E4229',
-        location: { x: 86.4, y: 64, name: 'Arafura Swamp', }
+        location: { x: 86.4, y: 64, name: 'Arafura Swamp', },
       },
     ],
   },
@@ -624,6 +612,57 @@ const cultFeatFilms: movieType[] = [
 ];
 
 const globFeatFilms: movieType[] = [
+  {
+    id: 'AFNOGFF',
+    entries: [
+      {
+        title: { original: "ⴰⴽⵓⵏⴰⴽ ⵜⴷⴰⵍⴰⵜ ⵜⴰⵀⴰ ⵜⴰⵣⵓⴳⵀⴰⵉ", transliteration: "Akounak Tedalat Taha Tazoughai", translation: "Rain the Color of Blue with A Little Red In It", },
+        year: `2015`,
+        runtime: 75,
+        genre: ['Drama', 'Musical', 'Romance'],
+        group: { people: "Tuareg", language: "Tamasheq", country: "Niger/USA", },
+        info: `*Akounak* tells the story of a musician trying to make it against all odds, set against the backdrop of the Tuareg *tishoumaren* desert blues music scene. The protagonist, real life musician Mdou Moctar, must battle fierce competition from jealous musicians, overcome family conflicts, endure the trials of love, and overcome his biggest rival—himself.\nAn homage to Prince’s 1984 film *Purple Rain,* the story was written with and for a Tuareg audience by a Euro-American record label executive, drawing from the experiences of Mdou Moctar and his fellow musicians. Carried by stunning musical performances from Mdou, the film is equally a window into modern day Tuareg guitar in the city of Agadez, Niger as it is an experiment in new techniques of cross cultural collaboration, much like the genre of music being documented itself.\nThough the film's significant ethnographic and outside observer components disqualify it from being a proper cultural film, its efforts toward honest depictions, its involvement of local (though non-traditional) musicians, and especially its extensive use of the Tamasheq language are sufficient to qualify it as an alternate selection.`,
+        watch: 'https://archive.org/details/rain_the_color_of_blue',
+        trailer: 'https://youtu.be/QHgEuzv-zNA?t=2',
+        color: '#4f3457',
+        location: { x: 51.7, y: 43.5, name: 'Agadez, Niger', },
+      },
+    ],
+  },
+  {
+    id: 'ASHIGFF',
+    entries: [
+      {
+        title: { original: "ལུང་ནག་ན", transliteration: "Lung nag na", translation: "Lunana: A Yak in the Classroom", },
+        year: '2019',
+        runtime: 110,
+        genre: ['Drama', 'Comedy-Drama'],
+        group: { people: "Ngalop", language: "Dzongkha", country: "Bhutan", },
+        info: `*Lunana* follows Ugyen, a discontented, aspiring singer living in Thimphu who dreams of moving to Australia to become a rock star. He is sent to finish his mandatory teaching service in Lunana, a village of 56 people, 4,800 meters above sea level with no electricity or internet.\nFilmed on location in the Himalayas, the film showcases stunning, panoramic mountain scenery, and includes acting performances from many of the residents of the actual village of Lunana.`,
+        watch: ['https://tubitv.com/movies/100018429/lunana-a-yak-in-the-classroom','https://www.amazon.com/gp/video/detail/amzn1.dv.gti.2617c909-646d-4c96-aa0d-ca44f34ed961'],
+        trailer: 'https://youtu.be/1W8m1IjLJB8',
+        color: '#9e603a',
+        location: { x: 73.8, y: 35.45, name: 'Gasa District', }
+      },
+    ],
+  },
+  {
+    id: 'OCAUGFF',
+    entries: [
+      {
+        title: 'Samson and Delilah',
+        year: '2009',
+        runtime: 101,
+        genre: ['Drama', 'Addiction', 'Romance', 'Bleak', 'Emotional'],
+        group: { people: "Warlpiri", language: "Warlpiri", location: "Central Australian desert", },
+        info: `Samson and Delilah are 14-year-olds who live in the Aboriginal community of Iwupataka, or Jay Creek, near Alice Springs in Central Australia. Samson is mute and addicted to sniffing petrol, and Delilah takes care of her grandmother, with whom she creates dot paintings.\nDir/Scr **WARWICK THORNTON** calls the film a “survival love story” of overcoming the bleak circumstances of an impoverished, government-run Aboriginal settlement. He is best known for this, his award-winning debut feature film, and four and counting features since.`,
+        watch: 'https://therokuchannel.roku.com/details/1c9922336caf5e27b8339493022f5c90/samson-and-delilah',
+        trailer: 'https://youtu.be/kcLDCNSqimA',
+        color: '#8f562e',
+        location: { x: 85.1, y: 72, name: 'Iwupataka', },
+      },
+    ],
+  },
   {
     id: 'OCPLGFF',
     entries: [

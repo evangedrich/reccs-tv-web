@@ -34,9 +34,19 @@
   background-color: var(--color-front);
 }
 
+a > .title {
+  cursor: pointer;
+}
+.link {
+  transition: transform 50ms linear;
+}
+.link:active {
+  transform: scale(0.95);
+}
 .title {
   width: fit-content;
   cursor: default;
+  user-select: none;
 }
 .title span {
   display: inline-block;
@@ -48,9 +58,9 @@
 .title span:nth-child(even) {
   transform: translateY(0.08em);
 }
-/* .title:hover span:nth-child(odd) {
+.link:hover span:nth-child(odd) {
   transform: translateY(0.08em);
 }
-.title:hover span:nth-child(even) {
+.link:hover span:nth-child(even) {
   transform: translateY(-0.08em);
-} */
+}
