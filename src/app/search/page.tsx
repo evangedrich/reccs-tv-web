@@ -4,6 +4,7 @@ import { useState, useRef, useLayoutEffect } from 'react';
 import styles from '@/app/ui/search.module.css';
 import { notoSans } from '@/app/ui/fonts';
 import { broadSearch } from '@/app/functions/data-prep';
+import TurnDevice from '@/app/components/turn-device';
 import Stack from '@/app/components/stack';
 import Window from '@/app/components/window';
 
@@ -82,10 +83,11 @@ export default function SearchPage() {
               >arrow</button> */}
             </label>
           </form>
-          <Stack data={broadSearch(input)} showWindow={setShowWindow} setID={setClickedKey} isSearch={true} top={false} shuffled={false} matchLocation={locDummy} locSetter={setLocDummy} />
+          <Stack data={broadSearch(input)} showWindow={setShowWindow} setID={setClickedKey} isSearch={true} top={false} shuffled={true} matchLocation={locDummy} locSetter={setLocDummy} />
         </div>
       </div>
       <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} changeKey={setClickedKey} />
+      <TurnDevice />
     </div>
   )
 }

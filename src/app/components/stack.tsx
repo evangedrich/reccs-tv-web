@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState, useMemo, useEffect } from 'react';
 import styles from '@/app/ui/media.module.css';
 import { notoSans } from '@/app/ui/fonts';
 import Image from 'next/image';
@@ -34,11 +34,24 @@ function Poster({ movie, top, loc, locSetter, showWindow, setID, isSearch }: { m
 }
 
 export default function Stack({ data, top, shuffled, matchLocation, locSetter, showWindow, setID, isSearch }: { data: flatMovieType[], top: boolean, shuffled: boolean, matchLocation: string, locSetter: Dispatch<SetStateAction<string>>, showWindow: Dispatch<SetStateAction<boolean>>, setID: Dispatch<SetStateAction<string>>, isSearch: boolean }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  const shuffledData = useMemo(() => {
+    if (!isMounted) return data;
+    const array = [...data];
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }, [data, isMounted]);
   return (
     <div className={styles.stack}>
       <ul style={{maxHeight:isSearch?'35vw':'30.5vw',paddingBottom:isSearch?'5vw':'0.5vw'}}>
-        {data.map(movie => (
-          <Poster movie={movie} top={top} loc={matchLocation} locSetter={locSetter} showWindow={showWindow} setID={setID} isSearch={isSearch} key={`stack${movie.id}`} />
+        {shuffledData.map(movie => (
+          <Poster movie={movie} top={top} loc={matchLocation} locSetter={locSetter} showWindow={showWindow} setID={setID} isSearch={isSearch} key={`stack-${movie.id}`} />
         ))}
       </ul>
     </div>

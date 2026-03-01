@@ -177,7 +177,7 @@ export const subregions: subregionType[] = [
     id: "ASSE",
     color: "#ffeda0",
     neighbors: ['ASEA','ASSO','OCPL','OCMC'],
-    description: `Southeast Asia is most clearly divided into its Mainland and Maritime components, where Austroasiatic, Kra–Dai, and Sino–Tibetan areas dominate the Indochinese sprachbund in the former, and Austronesian features extend throughout the Malaysphere in the latter.`,
+    description: `Southeast Asia is most clearly divided into its Mainland and Maritime components, where Austroasiatic, Kra–Dai, and Sino–Tibetan areas dominate the Indochinese sprachbund in the former, and Austronesian languages extend throughout the Malaysphere in the latter.`,
     text: { x: 78, y: 48, el: <>Southeast<br/>Asia</>, },
     zoom: { x: 101, y: 51.25, amount: 3.4, },
   },

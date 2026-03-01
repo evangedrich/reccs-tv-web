@@ -6,6 +6,7 @@ import styles from '@/app/ui/geoscheme.module.css';
 import svgMap from '@/../public/map.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import TurnDevice from '@/app/components/turn-device';
 import Stack from '@/app/components/stack';
 import Window from '@/app/components/window';
 import { subregions, getDesc } from '@/app/lib/subregions';
@@ -58,7 +59,7 @@ export default function GeoschemePage() {
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
       if (thisColor && !allColors.includes(thisColor)) { allColors.push(thisColor); }
-      path.style.stroke = path.style.fill; path.style.strokeWidth = '0.25';
+      path.style.stroke = path.style.fill; path.style.strokeWidth = '0.2';
     });
     paths.forEach(path => {
       const thisColor = rgbToHex(path.style.fill)?.substring(1);
@@ -168,6 +169,7 @@ export default function GeoschemePage() {
       </div>
 
       <Window show={showWindow} changeShow={setShowWindow} dataKey={clickedKey} changeKey={setClickedKey} />
+      <TurnDevice />
     </div>
   );
 }

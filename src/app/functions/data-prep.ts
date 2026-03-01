@@ -58,6 +58,9 @@ export const shuffle = (arr: any) => {
     [arr[currIndex], arr[randIndex]] = [arr[randIndex], arr[currIndex]];
   } return arr;
 };
+export const searchDataShuffled = (arr: any) => {
+  return shuffle(searchData(arr));
+};
 
 // returns correct primary title
 export const getMainTitle = (title: string | { original: string, transliteration?: string, translation?: string, }) => {
@@ -102,4 +105,7 @@ export const broadSearch = (query: string) => {
     checkRegion(movie.id) || checkTitle(movie.title) || checkGenre(movie.genre) || checkTags(movie.tags) || checkGroup(movie.group) || checkStream(movie.watch)
   ));
   return findings;
+};
+export const broadSearchShuffled = (txt: string) => {
+  return shuffle(broadSearch(txt));
 };

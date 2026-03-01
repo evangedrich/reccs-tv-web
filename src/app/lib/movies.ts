@@ -200,7 +200,7 @@ const cultFeatFilms: movieType[] = [
         runtime: 85,
         genre: ['Drama', 'Road Movie'],
         tags: ['bechdel test'],
-        group: { people: "Oglala", language: "English", location: "South Dakota, US", },
+        group: { people: "Oglala Lakota", language: "English", location: "South Dakota, US", },
         info: `A grieving woman embarks on a road trip through the American Midwest after receiving an unexpected invitation to reunite with her estranged Oglala Lakota family. Along the way, she uncovers her family history and a path to closure.\nIn this poetic romance-for-life, a path is forged not only for the construction of contemporary cinema but also the experience of life's journey on the whole.\nDir/Scr **MORISSA MALTZ** assembled a council of women Lily Gladstone, Lainey Bearkiller Shangreaux, and Vanara Taing to devise and perform the story of *The Unknown Country*.`,
         watch: ['https://www.kanopy.com/en/product/16006763','https://www.amazon.com/gp/video/detail/B0B8PXWGSM','https://www.hoopladigital.com/title/19208197','https://mubi.com/en/us/films/the-unknown-country','https://www.hulu.com/movie/the-unknown-country-4ae7f515-2693-4d62-a75c-187d32f97219'],
         trailer: 'https://youtu.be/enT3zQzvhGw',

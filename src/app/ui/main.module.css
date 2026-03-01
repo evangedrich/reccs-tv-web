@@ -1,11 +1,12 @@
 .nav {
-  position: sticky;
+  position: sticky; /* position: relative; */
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
   z-index: 9;
   top: 0;
+  /* box-shadow: 0 0.1vw 0.1vw 0 rgba(24, 24, 24, 1); */
 }
 .navButtons {
   margin: 1vw;
@@ -65,4 +66,31 @@ a > .title {
 }
 .link:hover span:nth-child(even) {
   transform: translateY(-0.08em);
+}
+
+.turnDevice {
+
+}
+.turnDevice path {
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  transform-origin: 50% 50%;
+}
+.turnDevice path:nth-of-type(2) {
+  animation-name: turn-device;
+}
+@keyframes turn-device {
+  0%, 40% { transform: rotate(0deg); }
+  60%, 100% { transform: rotate(90deg); }
+}
+.turnDevice path:nth-of-type(1) {
+  animation-name: turn-arrows;
+}
+@keyframes turn-arrows {
+  0%, 20%, 40% { transform: rotate(0deg) scale(1); }
+  10%, 30%{ transform: rotate(10deg) scale(1); }
+  60% { transform: rotate(160deg) scale(1); }
+  70%, 100% { transform: rotate(180deg) scale(0); }
 }
