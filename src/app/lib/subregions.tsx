@@ -249,7 +249,7 @@ export const subregions: subregionType[] = [
     id: "OCAU",
     color: "#fdbb83",
     neighbors: ['OCML','ASSE'],
-    description: `The Pama–Nyungan language family, of which three-quarters of all Australian languages are part, covers nearly 90% of the continent, while the remaining 23-30 families and isolates are clustered in the north.`,
+    description: `The Pama–Nyungan language family, of which three-quarters of all Australian languages are part, covers nearly 90% of the continent, while the remaining ~30 families and isolates are clustered in the north.`,
     text: { x: 83.6, y: 73.5, el: <>Australia</>, },
     zoom: { x: 104, y: 85, amount: 4, },
   },

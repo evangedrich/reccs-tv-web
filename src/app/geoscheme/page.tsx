@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { fahkwang, inter, openSans } from '@/app/ui/fonts';
 import styles from '@/app/ui/geoscheme.module.css';
 import svgMap from '@/../public/map.svg';
@@ -31,6 +31,10 @@ export default function GeoschemePage() {
   const [currLoc, setCurrLoc] = useState('');
   const [showWindow, setShowWindow] = useState(false);
   const [clickedKey, setClickedKey] = useState('');
+  const [mapUrl, setMapUrl] = useState("/map.svg");
+  useEffect(() => {
+    setMapUrl(`/map.svg?v=${Date.now()}`);
+  }, []);
   function rgbToHex(rgb: string) {
     const match = rgb.match(/\d+/g);
     if (!match) return null;
@@ -117,7 +121,7 @@ export default function GeoschemePage() {
           <div className={`w-full h-full`} style={transformObj}>
             <object
               key={`map${val}`}
-              data="/map.svg"
+              data={mapUrl}
               type="image/svg+xml"
               onLoad={handleMapLoad}
             >

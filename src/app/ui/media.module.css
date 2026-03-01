@@ -109,6 +109,11 @@
   margin-top: 1vw;
   flex-shrink: 1;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .stack ul {
   width: 100%;

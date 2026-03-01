@@ -1,9 +1,11 @@
 .nav {
-  position: relative;
+  position: sticky;
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
+  z-index: 9;
+  top: 0;
 }
 .navButtons {
   margin: 1vw;

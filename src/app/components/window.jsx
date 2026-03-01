@@ -32,6 +32,8 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
   const windowRef = useRef(null);
   const descRef = useRef(null);
   const suggRef = useRef(null);
+  const reccsTimerRef = useRef(null);
+  const videoStartTimerRef = useRef(null);
   useEffect(() => { // prevent background scroll
     if (show) { document.body.style.overflow = 'hidden'; }
     else { document.body.style.overflow = 'unset'; }
@@ -41,7 +43,10 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
         setShowFs((prevShowFs) => {
-          if (prevShowFs) return false;
+          if (prevShowFs) {
+            closeTrailer(); // Call your function
+            return false;    // Close fullscreen
+          }
           return prevShowFs;
         });
       }
@@ -55,16 +60,19 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
   const playTrailer = (url) => {
     setTrailerUrl(url);
     setShowFs(true);
-    setTimeout(() => { setShowReccsTitle(true); }, 500);
+    reccsTimerRef.current = setTimeout(() => { setShowReccsTitle(true); }, 500);
   };
   const closeTrailer = () => {
+    clearTimeout(reccsTimerRef.current);
+    clearTimeout(videoStartTimerRef.current);
     setShowFs(false);
     setHasPlayed(false);
+    setShowReccsTitle(false);
   };
   const handleVideoStart = () => {
     if (!hasPlayed) {
       setHasPlayed(true);
-      setTimeout(() => { setShowReccsTitle(false); }, 2750);
+      videoStartTimerRef.current = setTimeout(() => { setShowReccsTitle(false); }, 2750);
     }
   };
   const toggleInfo = () => {
@@ -98,7 +106,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
               <span onClick={toggleInfo}>⋯&nbsp; {showInfo?'Less':'More'} info</span>
             </div>
             <div ref={descRef} style={{overflow:showInfo?'visible':'hidden',}}>
-              {getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'?textParser(data.info):<></>}
+              {getMainTitle(data.title)!=='Rehefa mihaona ny ranomasina sy ny kintana'||showInfo?textParser(data.info):<></>}
               {showInfo?<p><i><span style={{fontWeight:'500'}}>Genre tags</span>:</i>&nbsp; {data.genre.map((tag,i) => (<span key={`tag${i}`}>{tag}{i<data.genre.length-1?', ':''}</span>))}</p>:<></>}
             </div>
           </div>
