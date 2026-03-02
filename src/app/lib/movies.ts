@@ -514,7 +514,7 @@ const cultFeatFilms: movieType[] = [
         tags: ['bechdel test'],
         group: { people: "Khalkha", language: "Mongolian", country: "Mongolia", },
         info: `Nansal finds a small dog and names him Zochor. Her father refuses to let her keep it, believing it will bring the family bad luck and lead wolves to their sheep. Nansal decides to hide her four-legged friend, but things get complicated as winter approaches and the family prepares to move camps.\nDir/Scr **BYAMBASUREN DAVAA**, born 1971 in Ulaanbaatar, is a Mongolian filmmaker who tells stories embedded in the traditional life of the nomads of her country. The subjects of her movies also serve as amateur actors, playing mostly themselves, which positions her work somewhere between documentary and fiction.`,
-        watch: ['https://www.kanopy.com/en/product/cave-yellow-dog','https://youtu.be/6RZlpZCzA3U'],
+        watch: ['https://www.kanopy.com/en/product/cave-yellow-dog','https://tubitv.com/movies/294333/cave-of-the-yellow-dog','https://youtu.be/6RZlpZCzA3U'],
         trailer: 'https://youtu.be/MRiD5B2rKOg',
         color: '#906b5f',
         location: { x: 71.5, y: 20, name: 'Altai Region', }

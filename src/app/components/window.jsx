@@ -99,7 +99,7 @@ export default function Window({ show, changeShow, dataKey, changeKey, }) {
             </h3>
             <div>
               {data.watch!==''
-                ? <a href={getMovieLink(data.watch)} target="_blank">▶&nbsp; Play</a>
+                ? <a href={getMovieLink(data.watch)} target="_blank">&#9654;&nbsp; Play</a>
                 : <span className={styles.inactive}>▶&nbsp; Not Available</span>
               }
               <button onClick={() => playTrailer(data.trailer)}><span className={`text-[var(--color-front)] ${notoEmoji.className}`}>▶︎</span>&nbsp; Trailer</button>
